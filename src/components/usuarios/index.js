@@ -85,8 +85,6 @@ class Usuarios extends Component {
 }
 
 const mapStateToProps = ({ usuariosReducer }) => {
-	// usuariosReducer = { usuarios, cargando, error }
-	// Como se quieren usar los 3 atributos, se manda tal cual el objeto
 	return usuariosReducer;
 }
 

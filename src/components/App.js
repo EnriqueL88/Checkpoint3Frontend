@@ -14,7 +14,7 @@ const App =() => (
 					<Header/>
 						<div className="container">
 							<Route exact path="/aerolineas" component={Aerolineas}/>
-              <Route exact path='/usuarios' component={Usuarios} />
+              				<Route exact path='/usuarios' component={Usuarios} />
 							<Route exact path="/" component={Body}/>
 						</div>
 					<Footer/>

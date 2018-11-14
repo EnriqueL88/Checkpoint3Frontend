@@ -13,8 +13,8 @@ class Aerolineas extends Component {
 				&nbsp;
 					<Button floating large className='blue accent-1' waves='light' icon='add'/>
 				</h3>
-				<div class="row">
-					<div class="col s12 offset-s1">
+				<div className="row">
+					<div className="col s12 offset-s1">
 						<Col>
 							<Card className='blue-grey darken-1' textClassName='white-text' title='Aviacsa' actions={[<a href='#'>Visita Aviacsa</a>]}>
 							Detalles de Aviacsa.

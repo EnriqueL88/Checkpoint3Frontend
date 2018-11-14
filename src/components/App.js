@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Route, BrowserRouter} from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
+import Aerolineas from './aerolineas';
+import Body from './Body';
+import Usuarios from './usuarios';
+
 
 class App extends Component {
-  render() {
-    return (
-       <div>
-        hola
-      </div>
-    );
-  }
-}
 
+	render(){
+		return(
+			<div>
+				<BrowserRouter>
+					<div>
+						<Header/>
+							<div className="container">
+								<Route exact path="/aerolineas" component={Aerolineas}/>
+								<Route exact path='/usuarios' component={Usuarios} />
+								<Route exact path="/" component={Body}/>
+							</div>
+						<Footer/>
+					</div>
+				</BrowserRouter>
+			</div>
+		);
+	}
+}
 export default App;

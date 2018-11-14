@@ -12,6 +12,7 @@ const Body = (props) => (
 			</div>
 		</div>
 		<div className="container">
+
 			<ul className="collapsible">
 				<li>
 					<div className="collapsible-header"><i className="material-icons">perm_contact_calendar</i><h4>Usuarios</h4></div>
@@ -20,12 +21,14 @@ const Body = (props) => (
 					</blockquote>
 				</li>
 				<li>
+
 					<div className="collapsible-header"><i className="material-icons">flight_takeoff</i><h4>Vuelos</h4></div>
 					<blockquote>
 						Consulte si requiere revisar vuelos y su estatus.
 					</blockquote>
 				</li>
 				<li>
+
 					<div className="collapsible-header"><i className="material-icons">business</i><h4>Aerolineas</h4></div>
 					<blockquote>
 						Consulte si requiere saber sobre las aerolíneas.

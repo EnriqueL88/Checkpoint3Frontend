@@ -7,24 +7,22 @@ import Body from './Body';
 import Usuarios from './usuarios';
 
 
-class App extends Component {
+const App =() => (
+		<div>
+			<BrowserRouter>
+				<div>
+					<Header/>
+						<div className="container">
+							<Route exact path="/aerolineas" component={Aerolineas}/>
+              <Route exact path='/usuarios' component={Usuarios} />
+							<Route exact path="/" component={Body}/>
+						</div>
+					<Footer/>
+				</div>
+			</BrowserRouter>
+		</div>
+	)
 
-	render(){
-		return(
-			<div>
-				<BrowserRouter>
-					<div>
-						<Header/>
-							<div className="container">
-								<Route exact path="/aerolineas" component={Aerolineas}/>
-								<Route exact path='/usuarios' component={Usuarios} />
-								<Route exact path="/" component={Body}/>
-							</div>
-						<Footer/>
-					</div>
-				</BrowserRouter>
-			</div>
-		);
-	}
-}
+
+
 export default App;

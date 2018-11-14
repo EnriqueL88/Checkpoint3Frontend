@@ -79,7 +79,6 @@ class Usuarios extends Component {
                                     <Input type="email" label="Email" s={6} />
                                     <Input  label="ID de pasaporte" s={6} />
                                 </Row>
-                                    <h6><Button>Submit</Button></h6>
                         </Modal>
                     </h3>
 				{

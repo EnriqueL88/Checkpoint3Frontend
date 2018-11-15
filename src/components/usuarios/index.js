@@ -16,14 +16,14 @@ class Usuarios extends Component {
     <tr>
         <th>Nombre</th>
         <th>Id de Pasaporte</th>
-        <th>Nacionalidad</th>   
+        <th>Fecha de nacimiento</th>   
     </tr>
 </thead>
 
 <tbody>
     {
         this.props.usuarios.map((elem, index) => (
-            <tr key={ elem.passaporte }>
+            <tr key={ elem.pasaporte }>
                 <td>{ elem.nombre }</td>
                 <td>{ elem.pasaporte }</td>
                 <td>{ elem.nacionalidad }</td>

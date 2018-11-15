@@ -13,3 +13,7 @@ export const traerUsuarios = () => async (dispatch) =>
 		dispatch({ type: FALLO, payload: error.message });
 	}
 };  
+
+export const cambiarInput = (type, valor) => async (dispatch) => {
+	dispatch({ type, payload: valor });
+};

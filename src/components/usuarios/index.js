@@ -59,7 +59,9 @@ class Usuarios extends Component {
 		<div className="center">
 			<Preloader size='big'/>
 		</div>
-	);
+    );
+    
+    handleChange = (event, type) => this.props.cambiarInput(type, event.target.value);
 
 	desplegarContenido = () => ( (this.props.error) ? this.desplegarError() : this.desplegarUsuarios() );
 

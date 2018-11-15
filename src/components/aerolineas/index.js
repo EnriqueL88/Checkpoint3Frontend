@@ -11,7 +11,7 @@ class Aerolineas extends Component {
 				<h3 className="valign-wrapper">
 				Aerolíneas
 				&nbsp;
-					<Button floating large className='blue accent-1' waves='light' icon='add'/>
+					<Button floating large className='green' waves='light' icon='add'/>
 				</h3>
 				<div className="row">
 					<div className="col s12 offset-s1">

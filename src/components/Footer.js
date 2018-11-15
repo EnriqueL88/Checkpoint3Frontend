@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Footer = (props) => (
-
 	<footer className="page-footer footer-fixed purple darken-1">
 		<div className="container">
 			<div className="row">

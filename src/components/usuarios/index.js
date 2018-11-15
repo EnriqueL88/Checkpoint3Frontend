@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {  Button, Preloader, Modal, Table, Icon } from 'react-materialize';
+import {  Button, Preloader, Modal, Table, Icon, Input, Row } from 'react-materialize';
 import * as usuariosActions from '../../actions/usuariosActions';
 
 class Usuarios extends Component {
@@ -9,7 +9,6 @@ class Usuarios extends Component {
 	componentDidMount() {
 		this.props.traerUsuarios();
 	}
-
 	desplegarUsuarios = () => (
 <Table hoverable={true}>
 <thead>
@@ -71,9 +70,14 @@ class Usuarios extends Component {
                         &nbsp;
                         <Modal
                             header='Agregue la informacion necesaria'
-                            trigger={<Button floating large className='green' waves='light' icon='add'>.</Button>}>
-                                    <input></input>
-                                    <Button>Submit</Button>
+                            trigger={<Button floating medium className='green' waves='light' icon='add_circle'>.</Button>}>
+                                <Row>
+                                    <Input  s={12} label="Nombre" />
+                                    <Input  s={12} label="Apellido Paterno" />
+                                    <Input  s={12} label="Apellido Materno" />
+                                    <Input type="email" label="Email" s={6} />
+                                    <Input  label="ID de pasaporte" s={6} />
+                                </Row>
                         </Modal>
                     </h3>
 				{

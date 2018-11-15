@@ -61,7 +61,17 @@ class Usuarios extends Component {
 		</div>
     );
     
-    handleChange = (event, type) => this.props.cambiarInput(type, event.target.value);
+    handleChange = (event, type) => this.props.cambiarInput(type, event.target.value);  
+
+    enviar = async () => {
+		const {
+		
+		} = this.props;
+
+		const valores = {  };
+
+		this.props.enviarForma(valores, this.props.comentarios);
+	};
 
 	desplegarContenido = () => ( (this.props.error) ? this.desplegarError() : this.desplegarUsuarios() );
 
@@ -75,11 +85,26 @@ class Usuarios extends Component {
                             header='Agregue la informacion necesaria'
                             trigger={<Button floating medium className='green' waves='light' icon='add_circle'>.</Button>}>
                                 <Row>
-                                    <Input  s={12} label="Nombre" />
-                                    <Input  s={12} label="Apellido Paterno" />
-                                    <Input  s={12} label="Apellido Materno" />
-                                    <Input type="email" label="Email" s={6} />
-                                    <Input  label="ID de pasaporte" s={6} />
+                                    <Input  s={12} label="Nombre" 
+                                     onChange={
+                                     (event) => this.handleChange(event, EDITNAME)
+                                      } />
+                                    <Input  s={12} label="Apellido Paterno"
+                                    onChange={
+                                     (event) => this.handleChange(event, )
+                                         } />
+                                    <Input  s={12} label="Apellido Materno"
+                                    onChange={
+                                     (event) => this.handleChange(event, )
+                                      } />
+                                    <Input type="email" label="Email" s={6}
+                                    onChange={
+                                     (event) => this.handleChange(event, )
+                                      } />
+                                    <Input  label="ID de pasaporte" s={6} 
+                                    onChange={
+                                     (event) => this.handleChange(event, )
+                                      } />
                                 </Row>
                         </Modal>
                     </h3>

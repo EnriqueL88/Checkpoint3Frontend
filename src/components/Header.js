@@ -3,7 +3,7 @@ import React from 'react';
 const Header = (props) => (
 		<div>
 			<nav>
-				<div className="nav-wrapper green darken-1">
+				<div className="nav-wrapper green">
 					<a href="/" className="brand-logo right">ChikoriAir</a>
 						<ul className="left hide-on-med-and-down">
 							<li>

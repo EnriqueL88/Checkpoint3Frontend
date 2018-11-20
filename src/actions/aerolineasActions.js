@@ -6,7 +6,8 @@ import {
 	PEDIR_FLOTILLA,
 	CONSULTAR_FLOTILLA,
 	FALLO_CONSULTA,
-	ELIMINAR
+	ELIMINAR,
+	VACIAR_FORMULARIO_AEROLINEAS
 } from '../types/aerolineasTypes.js';
 
 export const desplegarAerolineas = () => async (dispatch) => {
@@ -43,4 +44,27 @@ export const borrarAerolinea = (id) => async (dispatch) => {
 		dispatch ({type: FALLO, payload: error.message});
 		window.Materialize.toast('Eliminación fallida, intente más tarde.', 5*1000, 'red');
 	}
-}
+};
+
+export const cambiarInput = (type, valor) => async (dispatch) => {
+	dispatch({type, payload: valor});
+};
+
+export const enviarForma = (valores, aerolineas) => async (dispatch) => {
+	dispatch ({type: LLAMAR});
+	try{
+		const response = await axios.post('https://chchikorita.herokuapp.com/api/aerolineas', valores);
+		dispatch({
+			type: EXITOSO,
+			payload: aerolineas
+		});
+		dispatch({
+			type:VACIAR_FORMULARIO_AEROLINEAS
+		});
+		window.Materialize.toast('Nueva aerolínea guardada exitosamente.', 5*1000, 'green');
+	}
+	catch(error) {
+		dispatch ({type: FALLO, payload: error.message});
+		window.Materialize.toast('Intente más tarde.', 5*1000, 'red')
+	};
+};

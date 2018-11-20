@@ -20,14 +20,14 @@ class Aerolineas extends Component {
 							<Col s={12} m={6} l={4}>
 							<Card
 								key={elem.IDAerolinea}
-								className='light-green lighten-5' 
+								className='light-green lighten-5 hoverable' 
 								textClassName='green lighten-5 black-text' 
 								title={elem.nombre} 
 								actions={[
 									<div>
 									<Modal
 										header={elem.nombre}
-										trigger={<Button>Ver flota</Button>}>
+										trigger={<Button className='left light-green accent-5 white-text hoverable'>Ver Flota</Button>}>
 											<Flotillas
 												id={elem.IDAerolinea}
 											/>
@@ -35,7 +35,22 @@ class Aerolineas extends Component {
 									<Modal
 										header='Eliminar Aerolinea'
 										bottomSheet
-										trigger={<Button><Icon>insert_chart</Icon></Button>}>
+										actions = {
+											<span>
+												<Button className='light-green lighten-1 modal-close' waves='light' icon='close' title='NO'/>
+												<Button 
+													className='light-green lighten-1 modal-close'
+													waves='light'
+													icon='check_circle'
+													title='Sí borrar'
+													onClick={()=> {
+															this.props.borrarAerolinea(elem.IDAerolinea)
+														}
+													}
+												/>
+											</span>
+										}
+										trigger={<Button className='right teal lighten-3 hoverable' icon='cancel'></Button>}>
 										¿Desea eliminar la Aerolínea {elem.nombre}?
 									</Modal>
 									</div>

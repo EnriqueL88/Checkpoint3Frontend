@@ -1,4 +1,13 @@
-import {LLAMAR, EXITOSO, FALLO, EDITAEROLINEA, PRIMER_GET, PEDIR_FLOTILLA, CONSULTAR_FLOTILLA, FALLO_CONSULTA} from '../types/aerolineasTypes.js';
+import {LLAMAR,
+	EXITOSO,
+	FALLO,
+	EDITAEROLINEA,
+	PRIMER_GET,
+	PEDIR_FLOTILLA,
+	CONSULTAR_FLOTILLA,
+	FALLO_CONSULTA, 
+	ELIMINAR
+} from '../types/aerolineasTypes.js';
 
 const INITIAL_STATE = {
 	aerolineas: [],
@@ -31,6 +40,7 @@ export default (state = INITIAL_STATE, action) => {
 	switch (action.type)
 	{
 		case LLAMAR: return {...state, error: '', cargando: true};
+		case ELIMINAR: return {...state, error:'', cargando: false};
 		case PRIMER_GET: return {...state, primer_get:true};
 		case EXITOSO: return {...state, aerolineas: action.payload, cargando: false, error: ''};
 		case FALLO: return {...state, error: action.payload, cargando: false};

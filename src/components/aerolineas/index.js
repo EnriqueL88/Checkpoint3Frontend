@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Flotillas from '../flotillas'
 import * as aerolineasActions from '../../actions/aerolineasActions';
-import {Col, Card, Button, Preloader, Row, Modal} from 'react-materialize';
+import {Col, Card, Button, Preloader, Row, Modal, Icon} from 'react-materialize';
 
 
 class Aerolineas extends Component {
@@ -24,13 +24,21 @@ class Aerolineas extends Component {
 								textClassName='green lighten-5 black-text' 
 								title={elem.nombre} 
 								actions={[
+									<div>
 									<Modal
-									header={elem.nombre}
-									trigger={<Button>Ver flota</Button>}>
-										<Flotillas
-											id={elem.IDAerolinea}
-										/>
-								</Modal>
+										header={elem.nombre}
+										trigger={<Button>Ver flota</Button>}>
+											<Flotillas
+												id={elem.IDAerolinea}
+											/>
+									</Modal>
+									<Modal
+										header='Eliminar Aerolinea'
+										bottomSheet
+										trigger={<Button><Icon>insert_chart</Icon></Button>}>
+										¿Desea eliminar la Aerolínea {elem.nombre}?
+									</Modal>
+									</div>
 									]}>
 									Origen: {elem.nacionalidad}.
 							</Card>

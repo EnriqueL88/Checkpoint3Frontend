@@ -10,19 +10,17 @@ import Usuarios from './usuarios';
 const App =() => (
 		<div>
 			<BrowserRouter>
-				<div>
+				<div id='Footer'>
 					<Header/>
-						<div className="container">
+						<main className="container">
 							<Route exact path="/aerolineas" component={Aerolineas}/>
-              <Route exact path='/usuarios' component={Usuarios} />
+							<Route exact path='/usuarios' component={Usuarios} />
 							<Route exact path="/" component={Body}/>
-						</div>
+						</main>
 					<Footer/>
 				</div>
 			</BrowserRouter>
 		</div>
 	)
-
-
 
 export default App;

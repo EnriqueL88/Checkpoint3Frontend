@@ -6,7 +6,7 @@ export const traerUsuarios = () => async (dispatch) =>
 	dispatch({ type: LLAMAR });
 
 	try {
-		const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+		const response = await axios.get('https://chchikorita.herokuapp.com/api/usuarios');
 		dispatch({ type: EXITOSO, payload: response.data });
 	}
 	catch(error) {

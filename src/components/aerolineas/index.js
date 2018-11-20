@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import Flotillas from '../flotillas'
 import * as aerolineasActions from '../../actions/aerolineasActions';
-import {Col, Card, Button, Preloader, Row, Modal, Table} from 'react-materialize';
+import {Col, Card, Button, Preloader, Row, Modal} from 'react-materialize';
 
 
 class Aerolineas extends Component {
@@ -9,6 +10,7 @@ class Aerolineas extends Component {
 		componentDidMount() {
 			if(!this.props.primer_get)
 			this.props.desplegarAerolineas();
+			this.props.consultarFlotilla();
 		}
 
 		desplegarAerolineas = () => (
@@ -17,14 +19,17 @@ class Aerolineas extends Component {
 						{this.props.aerolineas.map((elem, index)=> (
 							<Col s={12} m={6} l={4}>
 							<Card
+								key={elem.IDAerolinea}
 								className='light-green lighten-5' 
 								textClassName='green lighten-5 black-text' 
 								title={elem.nombre} 
 								actions={[
 									<Modal
 									header={elem.nombre}
-									trigger={<Button>Ver flotilla</Button>}>
-									<p>Traer componente flotilla</p>
+									trigger={<Button>Ver flota</Button>}>
+										<Flotillas
+											id={elem.IDAerolinea}
+										/>
 								</Modal>
 									]}>
 									Origen: {elem.nacionalidad}.

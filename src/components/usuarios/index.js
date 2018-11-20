@@ -70,7 +70,7 @@ class Usuarios extends Component {
                         &nbsp;
                         <Modal
                             header='Agregue la informacion necesaria'
-                            trigger={<Button floating medium className='green' waves='light' icon='add_circle'>.</Button>}>
+                            trigger={<Button floating large className='green lighen-1' waves='light' icon='add'/>}>
                                 <Row>
                                     <Input  s={12} label="Nombre" />
                                     <Input  s={12} label="Apellido Paterno" />

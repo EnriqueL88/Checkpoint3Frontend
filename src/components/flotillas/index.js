@@ -1,15 +1,31 @@
 import React , {Component} from 'react';
 import {connect} from 'react-redux';
 import * as flotillasActions from '../../actions/flotillasActions';
-import {Table} from 'react-materialize' ;
+import {Table, Button} from 'react-materialize' ;
 
-class index extends Component {
+class Flotillas extends Component {
+
+	componentDidMount() {
+		if(!this.props.primer_get)
+		this.props.desplegarFlotillas();
+		console.log(this.props.id)
+	}
+
+	desplegarFlotillas = () =>
+		this.props.matriculas.map((elem) =>
+			(
+				<tr key={elem.id}>
+					<td>{elem.matricula}</td>
+					<td>{elem.capacidad}</td>
+					<td className='alignIcons'>
+						<Button className='green accent-1' waves='light' icon='visibility'/>
+						<Button className='green accent-1' waves='light' icon='edit'/>
+					</td>
+				</tr>
+			));
 	render() {
 		return (
 			<div>
-				<Modal
-				header={elem.nombre}
-				trigger={<Button>Ver flotilla</Button>}>
 				<Table>
 					<thead>
 						<tr>
@@ -18,24 +34,12 @@ class index extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>39847</td>
-							<td>320</td>
-						</tr>
-							<tr>
-							<td>93844</td>
-							<td>270</td>
-						</tr>
-							<tr>
-							<td>93845</td>
-							<td>180</td>
-						</tr>
+						{this.desplegarFlotillas}
 					</tbody>
 				</Table>
-			</Modal>
 			</div>
 		);
-	}
+	}	
 }
 
 const mapStateToProps = ({flotillasReducer}) => 

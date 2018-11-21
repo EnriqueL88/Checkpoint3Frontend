@@ -6,9 +6,12 @@ import * as usuariosActions from '../../actions/usuariosActions';
 
 class Usuarios extends Component {
 
+    handleChange = (event, type) => this.props.cambiarInput(type, event.target.value);
+
 	componentDidMount() {
 		this.props.traerUsuarios();
-	}
+    }
+    
 	desplegarUsuarios = () => (
 <Table hoverable={true}>
 <thead>

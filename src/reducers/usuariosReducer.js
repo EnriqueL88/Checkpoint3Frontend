@@ -1,10 +1,18 @@
-import { LLAMAR, EXITOSO, FALLO, EDITNAME } from '../types/usuariosTypes';
+import { LLAMAR, EXITOSO, FALLO, EDITU } from '../types/usuariosTypes';
 
 const INITIAL_STATE = {
 	usuarios: [],
+
 	cargando: false,
 	error: '',
-	nombre: ''
+
+	nombre: '',
+	nombreCompleto: [],
+	apellidoPaterno: '',
+	apellidoMaterno: '',
+	fechaNacimiento: '',
+	correo: '',
+	pasaporte: ''
 };
 
 export default (state = INITIAL_STATE, action) =>
@@ -14,7 +22,7 @@ export default (state = INITIAL_STATE, action) =>
 		case LLAMAR: return { ...state, error: '', cargando: true };
 		case EXITOSO: return { ...state, error: '', cargando: false, usuarios: action.payload };
 		case FALLO: return { ...state, error: action.payload, cargando: false };
-		case EDITNAME: return { ...state, nombre: action.payload };
+		case EDITU: return { ...state, nombre: action.payload, apellidoMaterno: action.payload };
 		default: return state;
 	}
 }

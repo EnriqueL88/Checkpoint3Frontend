@@ -19,8 +19,9 @@ const Header = (props) => (
 								<a href="/aerolineas"><i className="material-icons left">business</i>Aerolíneas</a>
 							</li>
 							<li>
-								<a className="waves-effect waves-light btn pulse green darken-3">About Us<i className="material-icons left">people</i></a>
+								<a href="/about" className="waves-effect waves-light btn pulse green darken-3">About Us<i className="material-icons left">people</i></a>
 							</li>
+
 						</ul>
 					</div>
 			</nav>

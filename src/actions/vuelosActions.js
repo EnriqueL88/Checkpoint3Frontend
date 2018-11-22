@@ -25,7 +25,7 @@ export const traerVuelos = () => async(dispatch) => {
 export const traerVueloUnico = (idVuelo) => async(dispatch) => {
   dispatch(llamarAction);
   try {
-    const response = await axios.get(getApiUri(`vuelos/${id}`));
+    const response = await axios.get(getApiUri(`vuelos/${id}`)); // esta tronando id aqui 
     dispatch(exitoAction);
     dispatch({ type: Types.CONSULTA_VUELOS, payload: response.data });
   } catch (error) {

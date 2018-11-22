@@ -25,7 +25,7 @@ import * as vuelosActions from '../../actions/vuelosActions';
             </tr>
         </thead>
 
-<tbody>
+    <tbody>
     {   
         this.props.vuelos.map((elem, index) => (
             <tr key={ elem.IDVuelo }>
@@ -44,13 +44,13 @@ import * as vuelosActions from '../../actions/vuelosActions';
                     </Link>
                 </td>
             </tr>
-            ) 
-        )
+            
+        ))
     }
     </tbody>
  </Table>
  );
- 
+
 desplegarError = () => (
     <h1 className="red-text">
         { this.props.error }

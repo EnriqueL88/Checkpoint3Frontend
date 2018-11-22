@@ -8,7 +8,7 @@ class Usuarios extends Component {
 
 	componentDidMount() {
 		this.props.traerUsuarios();
-	}
+    }
     desplegarUsuarios = () => (
 <Table hoverable={true}>
 <thead>

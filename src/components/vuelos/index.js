@@ -7,6 +7,10 @@ import * as vuelosActions from '../../actions/vuelosActions';
 
  class Vuelos extends Component {
 
+    componentDidMount() {
+		this.props.traerVuelos();
+    }
+
     desplegarVuelos = () => (
         <Table hoverable={true}>
         <thead>
@@ -21,9 +25,9 @@ import * as vuelosActions from '../../actions/vuelosActions';
             </tr>
         </thead>
 
-        <tbody>
+<tbody>
     {   
-        this.props.usuarios.map((elem, index) => (
+        this.props.vuelos.map((elem, index) => (
             <tr key={ elem.IDVuelo }>
                 <td>{ elem.origen }</td>
                 <td>{ elem.destino }</td>
@@ -45,7 +49,8 @@ import * as vuelosActions from '../../actions/vuelosActions';
     }
     </tbody>
  </Table>
- )
+ );
+ 
 desplegarError = () => (
     <h1 className="red-text">
         { this.props.error }

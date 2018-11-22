@@ -8,7 +8,9 @@ import {LLAMAR,
 	EXITOSO_FLOTILLA,
 	LLAMAR_FLOTILLA,
 	PRIMER_GET_FLOTILLA,
-	FALLO_FLOTILLA
+	FALLO_FLOTILLA,
+	NOMBRE_AEROLINEA,
+	NACIONALIDAD_AEROLINEA
 } from '../types/aerolineasTypes.js';
 
 const INITIAL_STATE = {
@@ -47,8 +49,11 @@ export default (state = INITIAL_STATE, action) => {
 		case EXITOSO: return {...state, aerolineas: action.payload, cargando: false, error: ''};
 		case FALLO: return {...state, error: action.payload, cargando: false};
 
+		case NOMBRE_AEROLINEA: return {...state, nombre: action.payload};
+		case NACIONALIDAD_AEROLINEA: return {...state, nacionalidad: action.payload}
+
 		case EDITAEROLINEA: return {...state, nombre: action.payload, nacionalidad: action.payload, activo: action.payload};
-		case VACIAR_FORMULARIO_AEROLINEAS: return {...state, error:'', cargando: true, nombre: '', nacionalidad:''}
+		case VACIAR_FORMULARIO_AEROLINEAS: return {...state, error:'', cargando: false, nombre: '', nacionalidad:''}
 
 		case LLAMAR_FLOTILLA: return {...state, flotilla_cargar:{...state.flotilla_cargar, error:'', cargando: true}};
 		case PRIMER_GET_FLOTILLA: return {...state, flotilla_cargar: {...state.flotilla_cargar, primer_get:true}};

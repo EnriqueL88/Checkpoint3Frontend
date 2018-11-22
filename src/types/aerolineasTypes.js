@@ -9,3 +9,5 @@ export const EXITOSO_FLOTILLA = 'flotillas_exitoso';
 export const LLAMAR_FLOTILLA = 'flotillas_llamar';
 export const PRIMER_GET_FLOTILLA = 'primer_get_flotilla';
 export const FALLO_FLOTILLA = 'fallo_flotilla';
+export const NOMBRE_AEROLINEA = 'nombre_areolinea';
+export const NACIONALIDAD_AEROLINEA = 'nacionalidad_aerolinea';

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import Flotillas from '../flotillas'
 import * as aerolineasActions from '../../actions/aerolineasActions';
-import * as flotillasActions from '../../actions/flotillasActions';
 import {Col, Card, Button, Preloader, Row, Modal, Icon} from 'react-materialize';
 
 
@@ -28,8 +28,8 @@ class Aerolineas extends Component {
 									<Modal
 										header={elem.nombre}
 										modalOptions={{
-					            ready: () => this.props.desplegarFlotillas(elem.IDAerolinea)
-					          }}
+											ready: () => this.props.desplegarFlotillas(elem.IDAerolinea)
+										}}
 										trigger={
 											<Button 
 												className='left light-green accent-5 white-text hoverable'>Ver Flota</Button>
@@ -84,13 +84,14 @@ class Aerolineas extends Component {
 		desplegarContenido = () => ( (this.props.error) ? this.desplegarError() : this.desplegarAerolineas() );
 
 	render() {
-		console.log(this.props.flotilla_cargar.matriculas)
 		return (
 			<div>
 				<h3 className="valign-wrapper">
 					Aerolíneas
 					&nbsp;
-					<Button floating large className='green lighten-1' waves='light' icon='add'/>
+					<Link to='/a_agregar'>
+						<Button floating large className='green lighten-1' waves='light' icon='add'/>
+					</Link>
 				</h3>
 				{
 					(this.props.cargando) ? this.desplegarCargando() : this.desplegarContenido()

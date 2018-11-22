@@ -5,7 +5,8 @@ import Footer from './Footer';
 import Aerolineas from './aerolineas';
 import Body from './Body';
 import Usuarios from './usuarios';
-import About from './About.js'
+import About from './About.js';
+import Vuelos from './vuelos';
 
 const App =() => (
 		<div>
@@ -15,6 +16,7 @@ const App =() => (
 						<main className="container">
 							<Route exact path="/aerolineas" component={Aerolineas}/>
 							<Route exact path='/usuarios' component={Usuarios} />
+							<Route exact path='/vuelos' component={Vuelos} />
 							<Route exact path="/" component={Body}/>
 							<Route exact path="/about" component={About}/>
 						</main>

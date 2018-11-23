@@ -52,6 +52,8 @@ export const agregarVuelo = (vuelo) => async(dispatch) => {
     const response = await axios.post(getApiUri('vuelos'), vuelo);
     dispatch(exitoAction);
     dispatch({ type: Types.AGREGAR_VUELO, payload: response.data });
+    dispatch({ type: Types.LIMPIAR_DETALLE_VUELO });
+    window.Materialize.toast('Vuelo creado exitosamente.', 3000);
   } catch (error) {
     dispatchError(dispatch, error);
   }
@@ -63,6 +65,7 @@ export const modificarVuelo = (vuelo) => async(dispatch) => {
     const response = await axios.post(getApiUri(`vuelos/${vuelo.IDVuelo}`), vuelo);
     dispatch(exitoAction);
     dispatch({ type: Types.MODIFICAR_VUELO, payload: response.data });
+    window.Materialize.toast('Vuelo modificado exitosamente.', 3000);
   } catch (error) {
     dispatchError(dispatch, error);
   }
@@ -113,19 +116,19 @@ export const cambiarRuta = (nuevaRuta) => (dispatch) => {
 };
 
 export const cambiarEstado = (estado) => (dispatch) => {
-  dispatch({ type: Types.CAMBIAR_ESTADO, payload: estado })
+  dispatch({ type: Types.CAMBIAR_ESTADO, payload: parseInt(estado) })
 };
 
 export const cambiarMatricula = (matricula) => (dispatch) => {
-  dispatch({ type: Types.CAMBIAR_MATRICULA, payload: matricula })
+  dispatch({ type: Types.CAMBIAR_MATRICULA, payload: parseInt(matricula) })
 };
 
 export const cambiarOrigen = (origen) => (dispatch) => {
-  dispatch({ type: Types.CAMBIAR_ORIGEN, payload: origen})
+  dispatch({ type: Types.CAMBIAR_ORIGEN, payload: origen.toUpperCase() })
 };
 
 export const cambiarDestino = (destino) => (dispatch) => {
-  dispatch({ type: Types.CAMBIAR_DESTINO, payload: destino})
+  dispatch({ type: Types.CAMBIAR_DESTINO, payload: destino.toUpperCase() })
 };
 
 export const cambiarFechaSalida = (fecha) => (dispatch) => {

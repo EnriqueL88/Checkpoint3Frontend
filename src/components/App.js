@@ -23,6 +23,7 @@ const App =() => (
 							<Route exact path="/" component={Body}/>
 							<Route exact path="/about" component={About}/>
 							<Route exact path="/vuelos/:id" component={DetalleVuelo}/>
+							<Route exact path="/agregarVuelo" component={DetalleVuelo}/>
 							<Route exact path='/a_agregar' component={AerolineasAgregar}/>
 							<Route exact path='/manifiestos/:id' component={Manifiesto}/>
 						</main>

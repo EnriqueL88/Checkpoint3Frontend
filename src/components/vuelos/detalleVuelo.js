@@ -14,7 +14,7 @@ class DetalleVuelo extends Component {
     if (this.props.match.params.id) {
       this.props.traerVueloUnico(this.props.match.params.id);
     } else {
-      // Limpiar formulario
+      this.props.limpiarDetalleVuelos();
     }
     if (this.props.aerolineas.length === 0) {
       this.props.obtenerListaAerolineas();
@@ -79,7 +79,6 @@ class DetalleVuelo extends Component {
       if (this.props.match.params.id) {
         // Guarda un vuelo preexistente
         this.props.modificarVuelo(vuelo);
-        //alert(vuelo.fechaSalida);
       }
       else {
         // Guarda un vuelo nuevo
@@ -151,15 +150,16 @@ class DetalleVuelo extends Component {
       </Row>
     </div>);
 
-
-mostrarContenido = () => this.props.error ? this.mostrarError() : this.mostrarFormulario();
+  mostrarContenido = () => this.props.error ? this.mostrarError() : this.mostrarFormulario();
 
   mostrarCargando = () => (<div className="center"><Preloader size="big" /></div>)
 
   render() {
     return (
       <div>
-        <h3>Agregar nuevo vuelo</h3>
+        <h3>
+          { this.props.match.params.id ? "Detalles de vuelo" : "Agregar vuelo" }
+        </h3>
         { this.props.cargando ? this.mostrarCargando() : this.mostrarContenido() }
       </div>
     );

@@ -68,19 +68,11 @@ import DetalleVuelo from './detalleVuelo';
       return (
           <div>
               <h3 className="valign-wrapper left">Vuelos &nbsp;
-                <Modal
-                    header='Agregue la informacion necesaria'
-                    trigger={
-                      <Button floating large
-                              className='green lighten-1 valign-wrapper'
-                              waves='light' icon='flight_takeoff'/>}
-                    actions={
-                      <div>
-                        <Button className="modal-close purple col s6 m3 offset-m6"
-                                onClick={() => {}}>Guardar</Button>
-                        <Button className="modal-close green darken-2 col s6 m3">Cancelar</Button>
-                      </div>}>
-                </Modal>
+                <Link to="/agregarVuelo">
+                  <Button floating large
+                          className='green lighten-1 valign-wrapper'
+                          waves='light' icon='flight_takeoff'/>
+                </Link>
               </h3>
               {
                   (this.props.cargando) ? this.desplegarCargando() : this.desplegarContenido()

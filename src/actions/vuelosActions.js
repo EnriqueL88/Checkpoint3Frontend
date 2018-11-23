@@ -74,7 +74,7 @@ export const modificarVuelo = (vuelo) => async(dispatch) => {
   }
 };
 
-export const listaEstados = async(dispatch) => {
+export const listaEstados = () => async(dispatch) => {
   dispatch(llamarAction);
   try {
     const response = await axios.get(getApiUri('vuelos/estados'));
@@ -82,6 +82,30 @@ export const listaEstados = async(dispatch) => {
     //const estados = {};
     //response.data.forEach((item) =>  estados[item.idEstado] = item.estado);
     dispatch({type: Types.CONSULTA_ESTADOS, payload: response.data })
+  } catch (error) {
+    dispatchError(dispatch, error);
+  }
+};
+
+export const obtenerListaAerolineas = () => async(dispatch) => {
+  dispatch(llamarAction);
+  try {
+    const response = await axios.get(getApiUri('aerolineas'));
+    console.log(response.data);
+    dispatch(exitoAction);
+    dispatch({ type: Types.CONSULTA_AEROLINEAS, payload: response.data })
+  } catch (error) {
+    dispatchError(dispatch, error);
+  }
+};
+
+export const obtenerFlota = (idAerolinea) => async(dispatch) => {
+  dispatch(llamarAction);
+  try {
+    const response = await axios.get(getApiUri(`flota/${idAerolinea}`));
+    dispatch(exitoAction);
+    const matriculas = response.data.map(avion => avion.matricula);
+    dispatch({ type: Types.CONSULTA_MATRICULAS, payload: matriculas })
   } catch (error) {
     dispatchError(dispatch, error);
   }

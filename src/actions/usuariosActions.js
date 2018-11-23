@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LLAMAR_USUARIO, ELIMINAR_USUARIO, PRIMER_GET, EXITOSO_USUARIO, FALLO_USUARIO, VACIAR_FORMULARIO_USUARIO, USUARIO_EDITAR} from '../types/usuariosTypes';
+import { LLAMAR, EXITOSO, FALLO, LLAMAR_USUARIO, ELIMINAR_USUARIO, PRIMER_GET, EXITOSO_USUARIO, FALLO_USUARIO, VACIAR_FORMULARIO_USUARIO, USUARIO_EDITAR} from '../types/usuariosTypes';
 export const traerUsuarios = () => async (dispatch) =>
 {
 	dispatch({ type: LLAMAR });

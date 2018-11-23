@@ -13,7 +13,7 @@ const Header = (props) => (
 								<a href="/usuarios"><i className="material-icons left">perm_contact_calendar</i>Usuarios</a>
 							</li>
 							<li>
-								<a href="/"><i className="material-icons left">flight_takeoff</i>Vuelos</a>
+								<a href="/vuelos"><i className="material-icons left">flight_takeoff</i>Vuelos</a>
 							</li>
 							<li>
 								<a href="/aerolineas"><i className="material-icons left">business</i>Aerolíneas</a>

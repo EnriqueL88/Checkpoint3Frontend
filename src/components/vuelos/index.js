@@ -36,7 +36,7 @@ import * as vuelosActions from '../../actions/vuelosActions';
                 <td>{elem.fechaLlegada}</td>
                 <td>{elem.matricula}</td>
                 <td>
-                  <Link to={`/./${elem.id}`}>
+                  <Link to={`/vuelos/${elem.IDVuelo}`}>
                     <Icon>delete</Icon>
                   </Link>
                 </td>

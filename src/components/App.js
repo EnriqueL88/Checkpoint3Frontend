@@ -8,6 +8,7 @@ import Usuarios from './usuarios';
 import About from './About.js'
 import AerolineasAgregar from './aerolineas/Agregar'
 import Vuelos from './vuelos';
+import Manifiesto from './manifiesto';
 
 const App =() => (
 		<div>
@@ -21,6 +22,7 @@ const App =() => (
 							<Route exact path="/" component={Body}/>
 							<Route exact path="/about" component={About}/>
 							<Route exact path='/a_agregar' component={AerolineasAgregar}/>
+							<Route exact path='/vuelos/:id' component={Manifiesto}/>
 						</main>
 					<Footer/>
 				</div>

@@ -11,6 +11,19 @@ const llamarAction = { type: Types.LLAMAR };
 const exitoAction = { type: Types.EXITOSO };
 const dispatchError = (dispatch, error) => dispatch({ type: Types.FALLO, payload: error.message });
 
+export const traerManifiesto = (id) => async(dispatch) => {
+  dispatch(llamarAction);
+    console.log("id", id);
+  try {
+    const response = await axios.get(getApiUri(`vuelos/${id}/manifiesto`));
+    dispatch(exitoAction);
+    dispatch({ type: Types.TRAER_MANIF, payload: response.data });
+  } catch (error) {
+    dispatchError(dispatch, error);
+    console.log('errror')
+  }
+};
+
 export const traerVuelos = () => async(dispatch) => {
   dispatch(llamarAction);
   try {

@@ -44,7 +44,7 @@ import DetalleVuelo from './detalleVuelo';
                   </Link>
                 </td>
                 <td>
-                  <Link className="purple-text text-darken-text-2" to={`/manifiesto/${elem.IDVuelo}`}>
+                  <Link className="purple-text text-darken-text-2" to={`/manifiestos/${elem.IDVuelo}`}>
                     <Icon>people</Icon>
                   </Link>
                 </td>

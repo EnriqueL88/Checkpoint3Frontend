@@ -29,7 +29,9 @@ class Usuarios extends Component {
             correo,
             pasaporte
         } = this.props;
-        const valores = {nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, pasaporte};
+        const valores = {
+		nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, 
+		pasaporte: parseInt(pasaporte)};
         this.props.enviarUsuario(valores, this.props.usuarios);
     }
 

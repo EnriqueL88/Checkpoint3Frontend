@@ -91,7 +91,6 @@ export const obtenerListaAerolineas = () => async(dispatch) => {
   dispatch(llamarAction);
   try {
     const response = await axios.get(getApiUri('aerolineas'));
-    console.log(response.data);
     dispatch(exitoAction);
     dispatch({ type: Types.CONSULTA_AEROLINEAS, payload: response.data })
   } catch (error) {

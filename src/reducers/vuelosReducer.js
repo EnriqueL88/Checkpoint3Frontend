@@ -1,7 +1,7 @@
 import * as Types from '../types/vuelosTypes';
 
 const INITIAL_STATE = {
-  llamando: false,
+  cargando: false,
   error: null,
   vuelos: [],
   IDVuelo: 0,
@@ -19,9 +19,9 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case Types.LLAMAR: return { ...state, error: null, llamando: true };
-    case Types.EXITOSO: return { ...state, error: null, llamando: false };
-    case Types.FALLO: return { ...state, llamando: false, error: action.payload };
+    case Types.LLAMAR: return { ...state, error: null, cargando: true };
+    case Types.EXITOSO: return { ...state, error: null, cargando: false };
+    case Types.FALLO: return { ...state, cargando: false, error: action.payload };
 
     case Types.TRAER_MANIF:console.log(action.payload, 's') ;
     return {

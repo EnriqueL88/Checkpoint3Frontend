@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Preloader, Modal, Table, Icon, Input, Row } from 'react-materialize';
 import * as vuelosActions from '../../actions/vuelosActions';
+import DetalleVuelo from './detalleVuelo';
 
  class Vuelos extends Component {
   componentDidMount() {
@@ -54,35 +55,25 @@ import * as vuelosActions from '../../actions/vuelosActions';
       );
   };
 
-   desplegarError = () => <h1 className="red-text">{ this.props.error }</h1>;
+  desplegarError = () => <h1 className="red-text">{ this.props.error }</h1>;
 
-   desplegarCargando = () => <div className="center"><Preloader size='big'/></div>;
+  desplegarCargando = () => <div className="center"><Preloader size='big'/></div>;
 
 	desplegarContenido = () => this.props.error ? this.desplegarError() : this.desplegarVuelos();
 
   render() {
       return (
           <div>
-              <h3 className="valign-wrapper left">
-                        Vuelos
-                        &nbsp;
+              <h3 className="valign-wrapper left">Vuelos &nbsp;
                 <Modal
                     header='Agregue la informacion necesaria'
-                    trigger={<Button floating large className='green lighten-1 valign-wrapper right' waves='light' icon='flight_takeoff'/>}>
-                        <Row>
-                            <Input  s={6} label="Origen" />
-                            <Input  s={6} label="Destino" />
-                            <Input  s={6} label="Salida" />
-                            <Input  label="Llegada" s={6} />
-                            <Input  label="IDRuta" s={6} />
-                            <Input  label="Matricula" s={6} />
-                            <Button floating large className='green lighen-1' waves='light' icon='flight_takeoff' 
-                                    onClick={this.enviar} 
-                                    disabled={this.props.cargando}/> 
-                                    <h7>   Guardar Vuelo</h7>
-                        </Row>
+                    trigger={
+                      <Button floating large
+                              className='green lighten-1 valign-wrapper right'
+                              waves='light' icon='flight_takeoff'/>}>
+                  <DetalleVuelo />
                 </Modal>
-                </h3>
+              </h3>
               {
                   (this.props.cargando) ? this.desplegarCargando() : this.desplegarContenido()
               }

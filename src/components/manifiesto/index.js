@@ -21,8 +21,10 @@ class Manifiesto extends Component {
 	render() {
 		return (
 			<div>
-				<h3> Manifiesto</h3>
+				<h3> Manifiesto   
+					&nbsp;
                     <Button floating large className='green lighten-1' waves='light' icon='add'/>
+				</h3>
 
 				<Table>
 					<thead>

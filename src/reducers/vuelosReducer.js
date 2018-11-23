@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   destino: '',
   ruta: '',
   usuario:{},
-  pasaporte:''
+  pasaporte:'',
   idEstado: 0,
   estados: {},
   aerolineas: [],

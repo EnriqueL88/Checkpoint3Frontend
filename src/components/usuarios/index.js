@@ -6,18 +6,18 @@ import * as usuariosActions from '../../actions/usuariosActions';
 
 class Usuarios extends Component {
 
-	componentDidMount() {
-		this.props.traerUsuarios();
-	}
-	desplegarUsuarios = () => (
-<Table hoverable={true}>
-<thead>
-    <tr>
-        <th>Nombre</th>
-        <th>Id de Pasaporte</th>
-        <th>Nacionalidad</th>   
-    </tr>
-</thead>
+    componentDidMount() {
+        this.props.desplegarUsuarios();
+    }
+    desplegarUsuarios = () => (
+        <Table hoverable={true}>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Id de Pasaporte</th>
+                <th>Nacionalidad</th>   
+            </tr>
+        </thead>
 
 <tbody>
     {
@@ -42,26 +42,26 @@ class Usuarios extends Component {
     }
 </tbody>
 </Table>
-	);
+    );
 
-	desplegarError = () => (
-		<h1 className="red-text">
-			{ this.props.error }
-		</h1>
-	);
+    desplegarError = () => (
+        <h1 className="red-text">
+            { this.props.error }
+        </h1>
+    );
 
-	desplegarCargando = () => (
-		<div className="center">
-			<Preloader size='big'/>
-		</div>
-	);
+    desplegarCargando = () => (
+        <div className="center">
+            <Preloader size='big'/>
+        </div>
+    );
 
-	desplegarContenido = () => ( (this.props.error) ? this.desplegarError() : this.desplegarUsuarios() );
+    desplegarContenido = () => ( (this.props.error) ? this.desplegarError() : this.desplegarUsuarios() );
 
-	render() {
-		return (
-			<div>
-				<h3 className="valign-wrapper">
+    render() {
+        return (
+            <div>
+                <h3 className="valign-wrapper">
                         Usuarios
                         &nbsp;
                         <Modal
@@ -80,16 +80,15 @@ class Usuarios extends Component {
                                 </Row>
                         </Modal>
                     </h3>
-				{
-					(this.props.cargando) ? this.desplegarCargando() : this.desplegarContenido()
-				}
-			</div>
-		);
-	}
+                {
+                    (this.props.cargando) ? this.desplegarCargando() : this.desplegarContenido()
+                }
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = ({ usuariosReducer }) => {
-	return usuariosReducer;
+    return usuariosReducer;
 }
-
-export default connect(mapStateToProps, usuariosActions)(Usuarios);
+export default connect(mapStateToProps, usuariosActions)(Usuarios)

@@ -55,7 +55,7 @@ export default (state = INITIAL_STATE, action) =>
 		case PRIMER_GET: return {...state, primer_get:true};
 		case EXITOSO_USUARIO: return { ...state, usuarios: action.payload, cargando: false, error:''};
 		case FALLO_USUARIO: return { ...state, error: action.payload, cargando: false };
-		case VACIAR_FORMULARIO_USUARIO: return {...state, error:'', cargando: true, nombre: '', apellidoPaterno:'', apellidoMaterno:'', fechaNacimiento:'', correo:'', pasaporte:''}
+		case VACIAR_FORMULARIO_USUARIO: return {...state, error:'', cargando: false, nombre: '', apellidoPaterno:'', apellidoMaterno:'', fechaNacimiento:'', correo:'', pasaporte:''}
 
 		case NOMBRE: return {...state, nombre:action.payload};
 		case APPATERNO: return {...state, apellidoPaterno:action.payload};

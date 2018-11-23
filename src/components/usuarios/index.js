@@ -48,7 +48,7 @@ class Usuarios extends Component {
                 <td>{ elem.nombre }</td>
                 <td>{elem.apellidoPaterno +" "+ elem.apellidoMaterno}</td>
                 <td>{ elem.pasaporte }</td>
-                <td>{ elem.fechaNacimiento }</td>
+                <td>{ new Date(elem.fechaNacimiento).toLocaleDateString() }</td>
                 <td>{ elem.correo}</td>
                 <td className='alignIcons'>
                 <Modal

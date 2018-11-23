@@ -45,7 +45,7 @@ export const enviarUsuario = (valores, usuarios) => async (dispatch) => {
 	dispatch ({type: LLAMAR_USUARIO});
 	try {
 		const response = await axios.post ('https://chchikorita.herokuapp.com/api/usuarios', valores);
-		usuarios.unshift(response.data);
+		usuarios.unshift(valores);
 		dispatch ({ type: EXITOSO_USUARIO, payload: usuarios});
 		dispatch ({ type: VACIAR_FORMULARIO_USUARIO});
 		window.Materialize.toast('Usuario guardado exitosamente.', 5*1000, 'green');
@@ -68,7 +68,7 @@ export const llamarEditable = (id) => async (dispatch) => {
 		dispatch ({type: FALLO_USUARIO, payload: err.message});
 		window.Materialize.toast ('Intente más tarde.', 5*1000, 'red');
 	}
-}
+};
 
 // Esta acción sirve para registrar el cambio que se va aplicando en el input dentro del componente Editar Usuario.
 

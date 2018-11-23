@@ -23,7 +23,7 @@ import DetalleVuelo from './detalleVuelo';
             <th>Origen</th>
             <th>Destino</th>
             <th>Estado</th>
-            <th className="hide-on-med-and-down">Salida</th>
+            <th>Salida</th>
             <th>Llegada</th>
           </tr>
           </thead>
@@ -31,6 +31,7 @@ import DetalleVuelo from './detalleVuelo';
           <tbody>
           {this.props.vuelos.map(elem => (
               <tr key={elem.IDVuelo}>
+
                 <td>{elem.ruta}</td>
                 <td className="hide-on-med-and-down">{elem.matriculaID}</td>
                 <td>{elem.origen}</td>

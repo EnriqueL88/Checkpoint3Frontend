@@ -11,7 +11,9 @@ const INITIAL_STATE = {
   origen: '',
   destino: '',
   ruta: '',
-  estados: {}
+  estados: {},
+  aerolineas: [],
+  matriculas: []
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -44,8 +46,11 @@ export default (state = INITIAL_STATE, action) => {
       }
       return state;
     case Types.CONSULTA_ESTADOS:
-      console.log(action.payload);
       return { ...state, estados: action.payload };
+    case Types.CONSULTA_AEROLINEAS:
+      return { ...state, aerolineas: action.payload };
+    case Types.CONSULTA_MATRICULAS:
+      return { ...state, matriculas: action.payload };
     default: return state;
   }
 };

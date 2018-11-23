@@ -6,3 +6,5 @@ export const CONSULTA_VUELOS = "vuelos_consulta";
 export const AGREGAR_VUELO = "vuelos_agregar";
 export const MODIFICAR_VUELO = "vuelos_modificar";
 export const CONSULTA_ESTADOS = "estados_consulta";
+export const CONSULTA_AEROLINEAS = "vuelos_aerolineas";
+export const CONSULTA_MATRICULAS = "vuelos_matriculas";

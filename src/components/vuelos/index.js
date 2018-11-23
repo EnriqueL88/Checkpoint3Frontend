@@ -7,7 +7,6 @@ import * as vuelosActions from '../../actions/vuelosActions';
  class Vuelos extends Component {
   componentDidMount() {
     this.props.traerVuelos();
-    console.log(this.props.estados);
   }
 
   desplegarVuelos = () => {

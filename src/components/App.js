@@ -7,6 +7,7 @@ import Body from './Body';
 import Usuarios from './usuarios';
 import About from './About.js'
 import Vuelos from './vuelos';
+import DetalleVuelo from './vuelos/detalleVuelo';
 
 const App =() => (
 		<div>
@@ -19,6 +20,7 @@ const App =() => (
 							<Route exact path='/vuelos' component={Vuelos} />
 							<Route exact path="/" component={Body}/>
 							<Route exact path="/about" component={About}/>
+							<Route exact path="/vuelos/:id" component={DetalleVuelo}/>
 						</main>
 					<Footer/>
 				</div>

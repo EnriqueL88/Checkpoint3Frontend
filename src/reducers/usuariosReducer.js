@@ -5,6 +5,12 @@ import {
 	EXITOSO_USUARIO, 
 	FALLO_USUARIO,
 	VACIAR_FORMULARIO_USUARIO,
+	NOMBRE,
+	APPATERNO,
+	APMATERNO,
+	FECHA_NAC,
+	CORREO,
+	PASAPORTE,
 	USUARIO_EDITAR,
 	EDITAR_NOMBRE,
 	EDITAR_APPATERNO,
@@ -51,8 +57,15 @@ export default (state = INITIAL_STATE, action) =>
 		case FALLO_USUARIO: return { ...state, error: action.payload, cargando: false };
 		case VACIAR_FORMULARIO_USUARIO: return {...state, error:'', cargando: true, nombre: '', apellidoPaterno:'', apellidoMaterno:'', fechaNacimiento:'', correo:'', pasaporte:''}
 
+		case NOMBRE: return {...state, nombre:action.payload};
+		case APPATERNO: return {...state, apellidoPaterno:action.payload};
+		case APMATERNO: return {...state, apellidoMaterno:action.payload};
+		case FECHA_NAC: return {...state, fechaNacimiento:action.payload};
+		case CORREO: return {...state, correo:action.payload};
+		case PASAPORTE: return {...state, pasaporte:action.payload};
+
 		case USUARIO_EDITAR: return {...state, usuario_editar: action.payload, cargando: false, error: ''};
-		
+
 		case EDITAR_NOMBRE: return {...state, usuario_editar: {...state.usuario_editar, nombre: action.payload}}
 		case EDITAR_APPATERNO: return {...state, usuario_editar: {...state.usuario_editar, apellidoPaterno: action.payload}}
 		case EDITAR_APMATERNO: return {...state, usuario_editar: {...state.usuario_editar, apellidoMaterno: action.payload}}

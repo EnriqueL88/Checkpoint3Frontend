@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import {  Button, Preloader, Modal, Table, Icon, Input, Row } from 'react-materialize';
 import * as usuariosActions from '../../actions/usuariosActions';
 import {
-    EDITAR_NOMBRE,
-    EDITAR_APPATERNO,
-    EDITAR_APMATERNO,
-    EDITAR_FECHA_NAC,
-    EDITAR_CORREO,
-    EDITAR_PASAPORTE
+    NOMBRE,
+    APPATERNO,
+    APMATERNO,
+    FECHA_NAC,
+    CORREO,
+    PASAPORTE
 } from '../../types/usuariosTypes';
 
 class Usuarios extends Component {
@@ -126,7 +126,7 @@ class Usuarios extends Component {
                                     type='text'
                                     value={this.props.nombre}
                                     onChange= {
-                                        (event) => this.handleChange(event, EDITAR_NOMBRE)
+                                        (event) => this.handleChange(event, NOMBRE)
                                     }
                                     name='Nombre'
                                 />
@@ -137,7 +137,7 @@ class Usuarios extends Component {
                                     type='text'
                                     value={this.props.apellidoPaterno}
                                     onChange= {
-                                        (event) => this.handleChange(event, EDITAR_APPATERNO)
+                                        (event) => this.handleChange(event, APPATERNO)
                                     }
                                     name='APPAterno'
                                 />
@@ -148,7 +148,7 @@ class Usuarios extends Component {
                                     type='text'
                                     value={this.props.apellidoMaterno}
                                     onChange= {
-                                        (event) => this.handleChange(event, EDITAR_APMATERNO)
+                                        (event) => this.handleChange(event, APMATERNO)
                                     }
                                     name='APMaterno'
                                 />
@@ -159,7 +159,7 @@ class Usuarios extends Component {
                                     type='text'
                                     value={this.props.fechaNacimiento}
                                     onChange= {
-                                        (event) => this.handleChange(event, EDITAR_FECHA_NAC)
+                                        (event) => this.handleChange(event, FECHA_NAC)
                                     }
                                     name='FechaNac'
                                 />
@@ -170,7 +170,7 @@ class Usuarios extends Component {
                                     label="Email"
                                     value={this.props.correo}
                                     onChange= {
-                                        (event) => this.handleChange(event, EDITAR_CORREO)
+                                        (event) => this.handleChange(event, CORREO)
                                     }
                                     name='Mail'
                                 />
@@ -181,7 +181,7 @@ class Usuarios extends Component {
                                     type='number'
                                     value={this.props.pasaporte}
                                     onChange= {
-                                        (event) => this.handleChange(event, EDITAR_PASAPORTE)
+                                        (event) => this.handleChange(event, PASAPORTE)
                                     }
                                     name='Pasaporte'
                                 />

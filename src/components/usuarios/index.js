@@ -10,12 +10,35 @@ class Usuarios extends Component {
 		this.props.desplegarUsuarios();
 	}
 	desplegarUsuarios = () => (
-    <Table hoverable={true}>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Id de Pasaporte</th>
-                <th>Nacionalidad</th>
+
+<Table hoverable={true}>
+<thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Id de Pasaporte</th>
+        <th>Nacionalidad</th>   
+    </tr>
+</thead>
+
+<tbody>
+    {
+        this.props.usuarios.map((elem, index) => (
+            <tr key={ elem.IDUsuario }>
+                <td>{ elem.nombre }</td>
+                <td>{ elem.pasaporte }</td>
+                <td>{ elem.fechaNacimiento }</td>
+                
+                <td>
+                    <Link to={`/./${elem.id}`}>
+                        <Icon>edit</Icon>
+                    </Link>
+                </td>
+                <td>
+                    <Link to={`/./${elem.id}`}>
+                        <Icon>delete</Icon>
+                    </Link>
+                </td>
+
             </tr>
         </thead>
 
@@ -73,10 +96,14 @@ class Usuarios extends Component {
                             trigger={<Button floating large className='green lighen-1' waves='light' icon='add'/>}>
                                 <Row>
                                     <Input  s={12} label="Nombre" />
-                                    <Input  s={12} label="Apellido Paterno" />
-                                    <Input  s={12} label="Apellido Materno" />
+                                    <Input  s={6} label="Apellido Paterno" />
+                                    <Input  s={6} label="Apellido Materno" />
                                     <Input type="email" label="Email" s={6} />
                                     <Input  label="ID de pasaporte" s={6} />
+                                    <Button floating large className='green lighen-1' waves='light' icon='flight_takeoff' 
+                                    onClick={this.enviar} 
+                                    disabled={this.props.cargando}/> 
+                                    <h7>   Guardar Usuario</h7>
                                 </Row>
                         </Modal>
                     </h3>

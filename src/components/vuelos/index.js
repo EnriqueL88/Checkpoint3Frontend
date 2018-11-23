@@ -15,6 +15,7 @@ import * as vuelosActions from '../../actions/vuelosActions';
       <Table hoverable={true}>
           <thead>
           <tr>
+
             <th>Origen</th>
             <th>Destino</th>
             <th>estado</th>
@@ -22,22 +23,30 @@ import * as vuelosActions from '../../actions/vuelosActions';
             <th>Salida</th>
             <th>Llegada</th>
             <th>Matricula</th>
+
           </tr>
           </thead>
 
           <tbody>
           {this.props.vuelos.map(elem => (
               <tr key={elem.IDVuelo}>
+
+                <td>{elem.ruta}</td>
+                <td className="hide-on-med-and-down">{elem.matriculaID}</td>
                 <td>{elem.origen}</td>
                 <td>{elem.destino}</td>
-                <td>{elem.idEstado}</td>
-                <td>{elem.IDVuelo}</td>
-                <td>{elem.fechaSalida}</td>
-                <td>{elem.fechaLlegada}</td>
-                <td>{elem.matricula}</td>
+                <td>{this.props.estados[elem.idEstado]}</td>
+                <td className="hide-on-med-and-down">{new Date(elem.fechaSalida).toLocaleString()}</td>
+                <td>{new Date(elem.fechaLlegada).toLocaleString()}</td>
                 <td>
-                  <Link to={`/./${elem.id}`}>
-                    <Icon>delete</Icon>
+                  <Link className="purple-text" to={`/vuelos/${elem.IDVuelo}`}>
+                    <Icon>list</Icon>
+                  </Link>
+                </td>
+                <td>
+                  <Link className="purple-text text-darken-text-2" to={`/vuelos/${elem.IDVuelo}/manifiesto`}>
+                    <Icon>people</Icon>
+
                   </Link>
                 </td>
               </tr>
@@ -58,7 +67,9 @@ import * as vuelosActions from '../../actions/vuelosActions';
   render() {
       return (
           <div>
-              <h3 className="valign-wrapper left">Vuelos</h3>
+              <h3 className="valign-wrapper left">
+                        Vuelos
+                        &nbsp;
                 <Modal
                     header='Agregue la informacion necesaria'
                     trigger={<Button floating large className='green lighten-1 valign-wrapper right' waves='light' icon='flight_takeoff'/>}>
@@ -69,8 +80,15 @@ import * as vuelosActions from '../../actions/vuelosActions';
                             <Input  label="Llegada" s={6} />
                             <Input  label="IDRuta" s={6} />
                             <Input  label="Matricula" s={6} />
+
+                            <Button floating large className='green lighen-1' waves='light' icon='flight_takeoff' 
+                                    onClick={this.enviar} 
+                                    disabled={this.props.cargando}/> 
+                                    <h7>   Guardar Vuelo</h7>
                         </Row>
                 </Modal>
+                </h3>
+
               {
                   (this.props.cargando) ? this.desplegarCargando() : this.desplegarContenido()
               }

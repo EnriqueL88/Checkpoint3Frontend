@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Preloader, Modal, Table, Icon, Input, Row } from 'react-materialize';
+import { Button, Preloader, Modal, Table, Icon } from 'react-materialize';
 import * as vuelosActions from '../../actions/vuelosActions';
+import DetalleVuelo from './detalleVuelo';
 
  class Vuelos extends Component {
   componentDidMount() {
+    if (Object.entries(this.props.estados).length === 0) {
+      this.props.listaEstados();
+    }
     this.props.traerVuelos();
-    console.log(this.props.estados);
   }
 
   desplegarVuelos = () => {
@@ -15,8 +18,8 @@ import * as vuelosActions from '../../actions/vuelosActions';
       <Table hoverable={true}>
           <thead>
           <tr>
-            <th>IDRuta</th>
-            <th className="hide-on-med-and-down">Matricula</th>
+            <th>Ruta</th>
+            <th className="hide-on-med-and-down">Avión</th>
             <th>Origen</th>
             <th>Destino</th>
             <th>Estado</th>
@@ -41,7 +44,7 @@ import * as vuelosActions from '../../actions/vuelosActions';
                   </Link>
                 </td>
                 <td>
-                  <Link className="purple-text text-darken-text-2" to={`/vuelos/${elem.IDVuelo}/manifiesto`}>
+                  <Link className="purple-text text-darken-text-2" to={`/manifiesto/${elem.IDVuelo}`}>
                     <Icon>people</Icon>
                   </Link>
                 </td>
@@ -54,35 +57,22 @@ import * as vuelosActions from '../../actions/vuelosActions';
       );
   };
 
-   desplegarError = () => <h1 className="red-text">{ this.props.error }</h1>;
+  desplegarError = () => <h1 className="red-text">{ this.props.error }</h1>;
 
-   desplegarCargando = () => <div className="center"><Preloader size='big'/></div>;
+  desplegarCargando = () => <div className="center"><Preloader size='big'/></div>;
 
 	desplegarContenido = () => this.props.error ? this.desplegarError() : this.desplegarVuelos();
 
   render() {
       return (
           <div>
-              <h3 className="valign-wrapper left">
-                        Vuelos
-                        &nbsp;
-                <Modal
-                    header='Agregue la informacion necesaria'
-                    trigger={<Button floating large className='green lighten-1 valign-wrapper right' waves='light' icon='flight_takeoff'/>}>
-                        <Row>
-                            <Input  s={6} label="Origen" />
-                            <Input  s={6} label="Destino" />
-                            <Input  s={6} label="Salida" />
-                            <Input  label="Llegada" s={6} />
-                            <Input  label="IDRuta" s={6} />
-                            <Input  label="Matricula" s={6} />
-                            <Button floating large className='green lighen-1' waves='light' icon='flight_takeoff' 
-                                    onClick={this.enviar} 
-                                    disabled={this.props.cargando}/> 
-                                    <h7>   Guardar Vuelo</h7>
-                        </Row>
-                </Modal>
-                </h3>
+              <h3 className="valign-wrapper left">Vuelos &nbsp;
+                <Link to="/agregarVuelo">
+                  <Button floating large
+                          className='green lighten-1 valign-wrapper'
+                          waves='light' icon='flight_takeoff'/>
+                </Link>
+              </h3>
               {
                   (this.props.cargando) ? this.desplegarCargando() : this.desplegarContenido()
               }

@@ -64,12 +64,6 @@ export const traerVuelos = () => async(dispatch) => {
     const vuelosResponse = await axios.get(getApiUri("vuelos"));
     dispatch(exitoAction);
     dispatch({ type: Types.CONSULTA_TODOS_VUELOS, payload: vuelosResponse.data });
-
-    const estadosResponse = await axios.get(getApiUri('estados'));
-    dispatch(exitoAction);
-    const estados = {};
-    estadosResponse.data.forEach((item) =>  estados[item.idEstado] = item.estado);
-    dispatch({type: Types.CONSULTA_ESTADOS, payload: estados })
   } catch (error) {
     dispatchError(dispatch, error);
   }
@@ -80,7 +74,7 @@ export const traerVueloUnico = (idVuelo) => async(dispatch) => {
   try {
     const response = await axios.get(getApiUri(`vuelos/${idVuelo}`));
     dispatch(exitoAction);
-    dispatch({ type: Types.CONSULTA_VUELOS, payload: response.data });
+    dispatch({ type: Types.CONSULTA_VUELOS, payload: response.data[0] });
   } catch (error) {
     dispatchError(dispatch, error);
   }
@@ -92,6 +86,8 @@ export const agregarVuelo = (vuelo) => async(dispatch) => {
     const response = await axios.post(getApiUri('vuelos'), vuelo);
     dispatch(exitoAction);
     dispatch({ type: Types.AGREGAR_VUELO, payload: response.data });
+    dispatch({ type: Types.LIMPIAR_DETALLE_VUELO });
+    window.Materialize.toast('Vuelo creado exitosamente.', 3000);
   } catch (error) {
     dispatchError(dispatch, error);
   }
@@ -100,22 +96,23 @@ export const agregarVuelo = (vuelo) => async(dispatch) => {
 export const modificarVuelo = (vuelo) => async(dispatch) => {
   dispatch(llamarAction);
   try {
-    const response = axios.post(getApiUri(`vuelos/${vuelo.IDVuelo}`), vuelo);
+    const response = await axios.post(getApiUri(`vuelos/${vuelo.IDVuelo}`), vuelo);
     dispatch(exitoAction);
     dispatch({ type: Types.MODIFICAR_VUELO, payload: response.data });
+    window.Materialize.toast('Vuelo modificado exitosamente.', 3000);
   } catch (error) {
     dispatchError(dispatch, error);
   }
 };
 
-export const listaEstados = async(dispatch) => {
+export const listaEstados = () => async(dispatch) => {
   dispatch(llamarAction);
   try {
-    const response = await axios.get(getApiUri('vuelos/estados'));
+    const response = await axios.get(getApiUri('estados'));
     dispatch(exitoAction);
-    //const estados = {};
-    //response.data.forEach((item) =>  estados[item.idEstado] = item.estado);
-    dispatch({type: Types.CONSULTA_ESTADOS, payload: response.data })
+    const estados = {};
+    response.data.forEach(item =>  estados[item.idEstado] = item.estado);
+    dispatch({type: Types.CONSULTA_ESTADOS, payload: estados })
   } catch (error) {
     dispatchError(dispatch, error);
   }
@@ -139,3 +136,56 @@ export const enviarUsuario = (id, usuario) => async (dispatch) => {
   }
 };
 
+export const obtenerListaAerolineas = () => async(dispatch) => {
+  dispatch(llamarAction);
+  try {
+    const response = await axios.get(getApiUri('aerolineas'));
+    dispatch(exitoAction);
+    dispatch({ type: Types.CONSULTA_AEROLINEAS, payload: response.data })
+  } catch (error) {
+    dispatchError(dispatch, error);
+  }
+};
+
+export const obtenerFlota = (idAerolinea) => async(dispatch) => {
+  dispatch(llamarAction);
+  try {
+    const response = await axios.get(getApiUri(`flota/${idAerolinea}`));
+    dispatch(exitoAction);
+    const matriculas = response.data.map(avion => avion.matricula);
+    dispatch({ type: Types.CONSULTA_MATRICULAS, payload: matriculas })
+  } catch (error) {
+    dispatchError(dispatch, error);
+  }
+};
+
+export const limpiarDetalleVuelos = () => async(dispatch) => {
+  dispatch({ type: Types.LIMPIAR_DETALLE_VUELO });
+};
+
+export const cambiarRuta = (nuevaRuta) => (dispatch) => {
+  dispatch({ type: Types.CAMBIAR_RUTA, payload: nuevaRuta })
+};
+
+export const cambiarEstado = (estado) => (dispatch) => {
+  dispatch({ type: Types.CAMBIAR_ESTADO, payload: parseInt(estado) })
+};
+
+export const cambiarMatricula = (matricula) => (dispatch) => {
+  dispatch({ type: Types.CAMBIAR_MATRICULA, payload: parseInt(matricula) })
+};
+
+export const cambiarOrigen = (origen) => (dispatch) => {
+  dispatch({ type: Types.CAMBIAR_ORIGEN, payload: origen.toUpperCase() })
+};
+
+export const cambiarDestino = (destino) => (dispatch) => {
+  dispatch({ type: Types.CAMBIAR_DESTINO, payload: destino.toUpperCase() })
+};
+
+export const cambiarFechaSalida = (fecha) => (dispatch) => {
+  dispatch({ type: Types.CAMBIAR_FECHA_SALIDA, payload: fecha})
+};
+export const cambiarFechaLlegada = (fecha) => (dispatch) => {
+  dispatch({ type: Types.CAMBIAR_FECHA_LLEGADA, payload: fecha})
+};

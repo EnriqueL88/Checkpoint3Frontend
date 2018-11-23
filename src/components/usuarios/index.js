@@ -7,45 +7,45 @@ import * as usuariosActions from '../../actions/usuariosActions';
 class Usuarios extends Component {
 
 	componentDidMount() {
-		this.props.traerUsuarios();
+		this.props.desplegarUsuarios();
 	}
 	desplegarUsuarios = () => (
-<Table hoverable={true}>
-<thead>
-    <tr>
-        <th>Nombre</th>
-        <th>Id de Pasaporte</th>
-        <th>Nacionalidad</th>   
-    </tr>
-</thead>
-
-<tbody>
-    {
-        this.props.usuarios.map((elem, index) => (
-            <tr key={ elem.IDUsuario }>
-                <td>{ elem.nombre }</td>
-                <td>{ elem.pasaporte }</td>
-                <td>{ elem.fechaNacimiento }</td>
-                <td>
-                    <Link to={`/./${elem.id}`}>
-                        <Icon>add</Icon>
-                    </Link>
-                </td>
-                <td>
-                    <Link to={`/./${elem.id}`}>
-                        <Icon>edit</Icon>
-                    </Link>
-                </td>
-                <td>
-                    <Link to={`/./${elem.id}`}>
-                        <Icon>delete</Icon>
-                    </Link>
-                </td>
+    <Table hoverable={true}>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Id de Pasaporte</th>
+                <th>Nacionalidad</th>
             </tr>
-        ))
-    }
-</tbody>
-</Table>
+        </thead>
+
+        <tbody>
+            {
+                this.props.usuarios.map((elem, index) => (
+                    <tr key={ elem.IDUsuario }>
+                        <td>{ elem.nombre }</td>
+                        <td>{ elem.pasaporte }</td>
+                        <td>{ elem.fechaNacimiento }</td>
+                        <td>
+                            <Link to={`/./${elem.id}`}>
+                                <Icon>add</Icon>
+                            </Link>
+                        </td>
+                        <td>
+                            <Link to={`/./${elem.id}`}>
+                                <Icon>edit</Icon>
+                            </Link>
+                        </td>
+                        <td>
+                            <Link to={`/./${elem.id}`}>
+                                <Icon>delete</Icon>
+                            </Link>
+                        </td>
+                    </tr>
+                ))
+            }
+        </tbody>
+    </Table>
 	);
 
 	desplegarError = () => (

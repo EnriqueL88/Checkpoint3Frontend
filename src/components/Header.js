@@ -7,7 +7,7 @@ const Header = (props) => (
 			<Navbar left brand='Volantibus' className='green'>
 				<NavItem href='/'><Icon left>home</Icon> Home</NavItem>
 				<NavItem href='/usuarios'><Icon left>perm_contact_calendar</Icon>Usuarios</NavItem>
-				<NavItem href='/'><Icon left>flight_takeoff</Icon>Vuelos</NavItem>
+				<NavItem href='/vuelos'><Icon left>flight_takeoff</Icon>Vuelos</NavItem>
 				<NavItem href='/aerolineas'><Icon left>business</Icon>Aerolíneas</NavItem>
 				<NavItem href='/about'><Icon left>people</Icon>Quiénes somos?</NavItem>
 			</Navbar>

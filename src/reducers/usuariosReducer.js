@@ -52,6 +52,7 @@ export default (state = INITIAL_STATE, action) =>
 		case VACIAR_FORMULARIO_USUARIO: return {...state, error:'', cargando: true, nombre: '', apellidoPaterno:'', apellidoMaterno:'', fechaNacimiento:'', correo:'', pasaporte:''}
 
 		case USUARIO_EDITAR: return {...state, usuario_editar: action.payload, cargando: false, error: ''};
+		
 		case EDITAR_NOMBRE: return {...state, usuario_editar: {...state.usuario_editar, nombre: action.payload}}
 		case EDITAR_APPATERNO: return {...state, usuario_editar: {...state.usuario_editar, apellidoPaterno: action.payload}}
 		case EDITAR_APMATERNO: return {...state, usuario_editar: {...state.usuario_editar, apellidoMaterno: action.payload}}

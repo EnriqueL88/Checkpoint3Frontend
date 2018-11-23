@@ -3,72 +3,78 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {  Button, Preloader, Modal, Table, Icon, Input, Row } from 'react-materialize';
 import * as usuariosActions from '../../actions/usuariosActions';
+import {
+    EDITAR_NOMBRE,
+    EDITAR_APPATERNO,
+    EDITAR_APMATERNO,
+    EDITAR_FECHA_NAC,
+    EDITAR_CORREO,
+    EDITAR_PASAPORTE
+} from '../../types/usuariosTypes';
 
 class Usuarios extends Component {
 
 	componentDidMount() {
 		this.props.desplegarUsuarios();
 	}
+
+    handleChange = (event, type) => this.props.cambiarInput(type, event.target.value);
+
+    enviar = async () => {
+        const {
+            nombre,
+            apellidoPaterno,
+            apellidoMaterno,
+            fechaNacimiento,
+            correo,
+            pasaporte
+        } = this.props;
+        const valores = {nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, pasaporte};
+        this.props.enviarUsuario(valores, this.props.usuarios);
+    }
+
 	desplegarUsuarios = () => (
-
-<Table hoverable={true}>
-<thead>
-    <tr>
-        <th>Nombre</th>
-        <th>Id de Pasaporte</th>
-        <th>Nacionalidad</th>   
-    </tr>
-</thead>
-
-<tbody>
-    {
         this.props.usuarios.map((elem, index) => (
             <tr key={ elem.IDUsuario }>
                 <td>{ elem.nombre }</td>
+                <td>{elem.apellidoPaterno +" "+ elem.apellidoMaterno}</td>
                 <td>{ elem.pasaporte }</td>
                 <td>{ elem.fechaNacimiento }</td>
-                
-                <td>
-                    <Link to={`/./${elem.id}`}>
-                        <Icon>edit</Icon>
+                <td>{ elem.correo}</td>
+                <td className='alignIcons'>
+                    <Link to={`/`}>
+                        <Icon className="purple lighten-1 circle white-text">edit</Icon>
                     </Link>
+                    <Modal
+                        header='Suprimir Usuario'
+                        actions={
+                            <span>
+                                <Button 
+                                    className='purple lighten-1 modal-close' 
+                                    waves='light' 
+                                    icon='close' 
+                                    tooltip="No borrar"
+                                />
+                                <Button
+                                    className='green lighten-1 modal-close'
+                                    waves='light'
+                                    icon='done'
+                                    tooltip='Borrar'
+                                    onClick={()=>{
+                                        this.props.borrarUsuario(elem.IDUsuario);
+                                    }}
+                                />
+                            </span>
+                        }
+                        trigger= {
+                            <Link to={`/`}>
+                                <Icon className="purple lighten-1 circle white-text">delete_outline</Icon>
+                            </Link>}>
+                            <p>¿Está seguro que desea suprimir este usuario?</p>
+                    </Modal>
                 </td>
-                <td>
-                    <Link to={`/./${elem.id}`}>
-                        <Icon>delete</Icon>
-                    </Link>
-                </td>
-
             </tr>
-        </thead>
-
-        <tbody>
-            {
-                this.props.usuarios.map((elem, index) => (
-                    <tr key={ elem.IDUsuario }>
-                        <td>{ elem.nombre }</td>
-                        <td>{ elem.pasaporte }</td>
-                        <td>{ elem.fechaNacimiento }</td>
-                        <td>
-                            <Link to={`/./${elem.id}`}>
-                                <Icon>add</Icon>
-                            </Link>
-                        </td>
-                        <td>
-                            <Link to={`/./${elem.id}`}>
-                                <Icon>edit</Icon>
-                            </Link>
-                        </td>
-                        <td>
-                            <Link to={`/./${elem.id}`}>
-                                <Icon>delete</Icon>
-                            </Link>
-                        </td>
-                    </tr>
-                ))
-            }
-        </tbody>
-    </Table>
+        ))
 	);
 
 	desplegarError = () => (
@@ -86,34 +92,122 @@ class Usuarios extends Component {
 	desplegarContenido = () => ( (this.props.error) ? this.desplegarError() : this.desplegarUsuarios() );
 
 	render() {
-		return (
-			<div>
-				<h3 className="valign-wrapper">
-                        Usuarios
-                        &nbsp;
+        return (
+            <div>
+                <h3 className="valign-wrapper">
+                    Usuarios
+                    &nbsp;
                         <Modal
-                            header='Agregue la informacion necesaria'
-                            trigger={<Button floating large className='green lighen-1' waves='light' icon='add'/>}>
-                                <Row>
-                                    <Input  s={12} label="Nombre" />
-                                    <Input  s={6} label="Apellido Paterno" />
-                                    <Input  s={6} label="Apellido Materno" />
-                                    <Input type="email" label="Email" s={6} />
-                                    <Input  label="ID de pasaporte" s={6} />
-                                    <Button floating large className='green lighen-1' waves='light' icon='flight_takeoff' 
-                                    onClick={this.enviar} 
-                                    disabled={this.props.cargando}/> 
-                                    <h7>   Guardar Usuario</h7>
-                                </Row>
+                        header='Agregue nuevo usuario.'
+                        actions={
+                            <span>
+                                <Button 
+                                    className='purple lighten-1 modal-close' 
+                                    waves='light'
+                                    icon='close'
+                                    title='Cancelar'
+                                />
+                                <Button
+                                    className='green lighten-1 modal-close'
+                                    waves='light'
+                                    icon='person_add'
+                                    title='Guardar'
+                                    onClick={this.enviar}
+                                    disabled={this.props.cargando}
+                                />
+                            </span>
+                        }
+                        trigger={<Button floating large className='green lighten-1' waves='light' icon='add'/>}>
+                            <Row>
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="Nombre de Usuario"
+                                    type='text'
+                                    value={this.props.nombre}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_NOMBRE)
+                                    }
+                                    name='Nombre'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="Apellido Paterno"
+                                    type='text'
+                                    value={this.props.apellidoPaterno}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_APPATERNO)
+                                    }
+                                    name='APPAterno'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="Apellido Materno"
+                                    type='text'
+                                    value={this.props.apellidoMaterno}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_APMATERNO)
+                                    }
+                                    name='APMaterno'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="Fecha Nacimiento DD/MM/AAAA"
+                                    type='text'
+                                    value={this.props.fechaNacimiento}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_FECHA_NAC)
+                                    }
+                                    name='FechaNac'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    type="email" 
+                                    label="Email"
+                                    value={this.props.correo}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_CORREO)
+                                    }
+                                    name='Mail'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="Pasaporte"
+                                    type='number'
+                                    value={this.props.pasaporte}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_PASAPORTE)
+                                    }
+                                    name='Pasaporte'
+                                />
+                            </Row>
                         </Modal>
-                    </h3>
-				{
-					(this.props.cargando) ? this.desplegarCargando() : this.desplegarContenido()
-				}
-			</div>
-		);
-	}
-}
+                </h3>
+                <br/>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th data-field='nombre'>Nombre</th>
+                            <th data-field='apellidos'>Apellidos</th>
+                            <th data-field='pasaporte'>Pasaporte</th>
+                            <th data-field='fechaNacimiento'>Fecha Nacimiento</th>
+                            <th data-field='correo'> E-Mail </th>
+                            <th data-field='actions'> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {(this.props.cargando)? this.desplegarCargando(): this.desplegarContenido()}
+                    </tbody>
+                </Table>
+            </div>
+        )
+    }
+};
 
 const mapStateToProps = ({ usuariosReducer }) => {
 	return usuariosReducer;

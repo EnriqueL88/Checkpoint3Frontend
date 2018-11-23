@@ -11,7 +11,7 @@ const INITIAL_STATE = {
   origen: '',
   destino: '',
   ruta: '',
-  manifiesto: []
+  manifiesto: [],
   estados: {}
 };
 

@@ -52,7 +52,6 @@ export default (state = INITIAL_STATE, action) => {
 		case NOMBRE_AEROLINEA: return {...state, nombre: action.payload};
 		case NACIONALIDAD_AEROLINEA: return {...state, nacionalidad: action.payload}
 
-		case EDITAEROLINEA: return {...state, nombre: action.payload, nacionalidad: action.payload, activo: action.payload};
 		case VACIAR_FORMULARIO_AEROLINEAS: return {...state, error:'', cargando: false, nombre: '', nacionalidad:''}
 
 		case LLAMAR_FLOTILLA: return {...state, flotilla_cargar:{...state.flotilla_cargar, error:'', cargando: true}};

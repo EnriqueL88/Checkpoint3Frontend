@@ -5,6 +5,7 @@ export const EXITOSO_USUARIO = 'usuarios_exitoso';
 export const FALLO_USUARIO = 'usuarios_fallo';
 export const VACIAR_FORMULARIO_USUARIO = 'vaciar_formulario_usuario';
 export const USUARIO_EDITAR = 'usuario_editar';
+
 export const EDITAR_NOMBRE = 'editar_nombre_usuario';
 export const EDITAR_APPATERNO = 'editar_appaterno_usuario';
 export const EDITAR_APMATERNO = 'editar_apmaterno_usuario';

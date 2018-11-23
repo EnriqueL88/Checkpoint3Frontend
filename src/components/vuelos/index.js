@@ -15,15 +15,13 @@ import * as vuelosActions from '../../actions/vuelosActions';
       <Table hoverable={true}>
           <thead>
           <tr>
-
+            <th>IDRuta</th>
+            <th>Matricula</th>
             <th>Origen</th>
             <th>Destino</th>
-            <th>estado</th>
-            <th>IDRuta</th>
+            <th>Estado</th>
             <th>Salida</th>
             <th>Llegada</th>
-            <th>Matricula</th>
-
           </tr>
           </thead>
 
@@ -46,7 +44,6 @@ import * as vuelosActions from '../../actions/vuelosActions';
                 <td>
                   <Link className="purple-text text-darken-text-2" to={`/vuelos/${elem.IDVuelo}/manifiesto`}>
                     <Icon>people</Icon>
-
                   </Link>
                 </td>
               </tr>

@@ -182,8 +182,7 @@ class Usuarios extends Component {
                                     tooltip='Borrar'
                                 /> 
                             }> 
-                            <p>¿Está seguro que desea suprimir este usuario?</p>
-                                
+                            <p>¿Está seguro que desea suprimir este usuario?</p>   
                     </Modal>
                 </td>
             </tr>
@@ -300,7 +299,7 @@ class Usuarios extends Component {
                                 />
                             </Row>
                         </Modal>
-                </h3>
+                    </h3>
                 <br/>
                 <Table>
                     <thead>

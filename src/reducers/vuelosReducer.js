@@ -6,11 +6,12 @@ const INITIAL_STATE = {
   vuelos: [],
   IDVuelo: 0,
   matriculaID: 0,
-  fechaSalida: null,
-  fechaLlegada: null,
+  fechaSalida: new Date(),
+  fechaLlegada: new Date(),
   origen: '',
   destino: '',
   ruta: '',
+  idEstado: 0,
   estados: {},
   aerolineas: [],
   matriculas: [],
@@ -33,12 +34,14 @@ export default (state = INITIAL_STATE, action) => {
     };
     case Types.CONSULTA_VUELOS: return {
       ...state,
+        IDVuelo: action.payload.IDVuelo,
       matriculaID: action.payload.matriculaID,
-      fechaSalida: action.payload.fechaSalida,
-      fechaLlegada: action.payload.fechaLlegada,
+      fechaSalida: Date.parse(action.payload.fechaSalida),
+      fechaLlegada: Date.parse(action.payload.fechaLlegada),
       origen: action.payload.origen,
       destino: action.payload.destino,
-      ruta: action.payload.ruta
+      ruta: action.payload.ruta,
+      idEstado: action.payload.idEstado
     };
     case Types.AGREGAR_VUELO: return {
       ...state,
@@ -56,6 +59,34 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, aerolineas: action.payload };
     case Types.CONSULTA_MATRICULAS:
       return { ...state, matriculas: action.payload };
+
+    case Types.LIMPIAR_DETALLE_VUELO:
+      return {
+        ...state,
+        IDVuelo: 0,
+        matriculaID: 0,
+        fechaSalida: new Date(),
+        fechaLlegada: new Date(),
+        origen: "",
+        destino: "",
+        ruta: "",
+        idEstado: 0
+      };
+    case Types.CAMBIAR_RUTA:
+      return {...state, ruta: action.payload };
+    case Types.CAMBIAR_ESTADO:
+      return {...state, idEstado: action.payload };
+    case Types.CAMBIAR_MATRICULA:
+      return {...state, matriculaID: action.payload };
+    case Types.CAMBIAR_ORIGEN:
+      return {...state, origen: action.payload };
+    case Types.CAMBIAR_DESTINO:
+      return {...state, destino: action.payload };
+    case Types.CAMBIAR_FECHA_SALIDA:
+      return {...state, fechaSalida: action.payload };
+    case Types.CAMBIAR_FECHA_LLEGADA:
+      return {...state, fechaLlegada: action.payload };
+
     default: return state;
   }
 };

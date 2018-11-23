@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Preloader, Modal, Table, Icon, Input, Row } from 'react-materialize';
+import { Button, Preloader, Modal, Table, Icon } from 'react-materialize';
 import * as vuelosActions from '../../actions/vuelosActions';
 import DetalleVuelo from './detalleVuelo';
 
  class Vuelos extends Component {
   componentDidMount() {
+    if (Object.entries(this.props.estados).length === 0) {
+      this.props.listaEstados();
+    }
     this.props.traerVuelos();
   }
 
@@ -16,8 +19,8 @@ import DetalleVuelo from './detalleVuelo';
       <Table hoverable={true}>
           <thead>
           <tr>
-            <th>IDRuta</th>
-            <th className="hide-on-med-and-down">Matricula</th>
+            <th>Ruta</th>
+            <th className="hide-on-med-and-down">Avión</th>
             <th>Origen</th>
             <th>Destino</th>
             <th>Estado</th>
@@ -42,7 +45,7 @@ import DetalleVuelo from './detalleVuelo';
                   </Link>
                 </td>
                 <td>
-                  <Link className="purple-text text-darken-text-2" to={`/vuelos/${elem.IDVuelo}/manifiesto`}>
+                  <Link className="purple-text text-darken-text-2" to={`/manifiesto/${elem.IDVuelo}`}>
                     <Icon>people</Icon>
                   </Link>
                 </td>
@@ -69,9 +72,14 @@ import DetalleVuelo from './detalleVuelo';
                     header='Agregue la informacion necesaria'
                     trigger={
                       <Button floating large
-                              className='green lighten-1 valign-wrapper right'
-                              waves='light' icon='flight_takeoff'/>}>
-                  <DetalleVuelo />
+                              className='green lighten-1 valign-wrapper'
+                              waves='light' icon='flight_takeoff'/>}
+                    actions={
+                      <div>
+                        <Button className="modal-close purple col s6 m3 offset-m6"
+                                onClick={() => {}}>Guardar</Button>
+                        <Button className="modal-close green darken-2 col s6 m3">Cancelar</Button>
+                      </div>}>
                 </Modal>
               </h3>
               {

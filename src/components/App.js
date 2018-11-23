@@ -9,6 +9,7 @@ import About from './About.js'
 import AerolineasAgregar from './aerolineas/Agregar'
 import Vuelos from './vuelos';
 import Manifiesto from './manifiesto';
+import UsuariosEditar from './usuarios/Editar';
 
 const App =() => (
 		<div>
@@ -21,8 +22,8 @@ const App =() => (
 							<Route exact path='/vuelos' component={Vuelos}/>
 							<Route exact path='/' component={Body}/>
 							<Route exact path='/about' component={About}/>
-
-  <Route exact path='/a_agregar' component={AerolineasAgregar}/>
+							<Route exact path='/u_editar/:id' component={UsuariosEditar}/>
+							<Route exact path='/a_agregar' component={AerolineasAgregar}/>
 							<Route exact path='/vuelos/:id' component={Manifiesto}/>
 						</main>
 					<Footer/>

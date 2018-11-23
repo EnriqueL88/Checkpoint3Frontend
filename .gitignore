@@ -59,9 +59,4 @@ typings/
 
 # next.js build output
 .next
-.idea/Checkpoint3Frontend.iml
-.idea/inspectionProfiles/Project_Default.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
-.idea/workspace.xml
+.idea/

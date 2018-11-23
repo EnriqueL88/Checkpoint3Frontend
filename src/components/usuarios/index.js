@@ -9,7 +9,13 @@ import {
     APMATERNO,
     FECHA_NAC,
     CORREO,
-    PASAPORTE
+    PASAPORTE,
+    EDITAR_NOMBRE,
+    EDITAR_APPATERNO,
+    EDITAR_APMATERNO,
+    EDITAR_FECHA_NAC,
+    EDITAR_CORREO,
+    EDITAR_PASAPORTE
 } from '../../types/usuariosTypes';
 
 class Usuarios extends Component {
@@ -29,7 +35,10 @@ class Usuarios extends Component {
             correo,
             pasaporte
         } = this.props;
-        const valores = {nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, pasaporte};
+        const valores = {
+		nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, correo, 
+        pasaporte: parseInt(pasaporte)
+        };
         this.props.enviarUsuario(valores, this.props.usuarios);
     }
 
@@ -39,12 +48,117 @@ class Usuarios extends Component {
                 <td>{ elem.nombre }</td>
                 <td>{elem.apellidoPaterno +" "+ elem.apellidoMaterno}</td>
                 <td>{ elem.pasaporte }</td>
-                <td>{ elem.fechaNacimiento }</td>
+                <td>{ new Date(elem.fechaNacimiento).toLocaleDateString() }</td>
                 <td>{ elem.correo}</td>
                 <td className='alignIcons'>
-                    <Link to={`/`}>
+<<<<<<< HEAD
+                    <Link to={`/u_editar/${elem.IDUsuario}`}>
                         <Icon className="purple lighten-1 circle white-text">edit</Icon>
                     </Link>
+=======
+                <Modal
+                        header='Editar Usuario'
+                        actions={
+                            <span>
+                                <Button 
+                                    className='purple lighten-1 modal-close' 
+                                    waves='light' 
+                                    icon='close' 
+                                    tooltip="No Editar"
+                                />
+                                <Button
+                                    className='green lighten-1 modal-close'
+                                    waves='light'
+                                    icon='done'
+                                    tooltip='Confirmar cambios'
+                                    onClick={()=>{
+                                        this.props.enviarUsuario(elem.IDUsuario);
+                                    }}
+                                />
+                            </span>
+                        }
+                        trigger= {
+                            <Button
+                                    className='green lighten-1 modal-close'
+                                    waves='light'
+                                    icon='edit'
+                                    tooltip='Editar'
+                                    onClick={()=>{
+                                        this.props.llamarEditable(elem.IDUsuario);
+                                    }}
+                                />
+                                }> 
+                            <Row>
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="Nombre de Usuario"
+                                    type='text'
+                                    value={this.props.nombre}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_NOMBRE)
+                                    }
+                                    name='Nombre'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="Apellido Paterno"
+                                    type='text'
+                                    value={this.props.apellidoPaterno}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_APPATERNO)
+                                    }
+                                    name='APPAterno'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="Apellido Materno"
+                                    type='text'
+                                    value={this.props.apellidoMaterno}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_APMATERNO)
+                                    }
+                                    name='APMaterno'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="Fecha Nacimiento DD/MM/AAAA"
+                                    type='text'
+                                    value={this.props.fechaNacimiento}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_FECHA_NAC)
+                                    }
+                                    name='FechaNac'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    type="email" 
+                                    label="Email"
+                                    value={this.props.correo}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_CORREO)
+                                    }
+                                    name='Mail'
+                                />
+                                <Input 
+                                    s={12}
+                                    m={6}
+                                    label="No. Pasaporte"
+                                    type='number'
+                                    value={this.props.pasaporte}
+                                    onChange= {
+                                        (event) => this.handleChange(event, EDITAR_PASAPORTE)
+                                    }
+                                    name='Pasaporte'
+                                />
+                            </Row> 
+                    </Modal>
+
+>>>>>>> 32888e9c9ae7c3059e5a89c5d7f545f51c113820
                     <Modal
                         header='Suprimir Usuario'
                         actions={
@@ -67,10 +181,14 @@ class Usuarios extends Component {
                             </span>
                         }
                         trigger= {
-                            <Link to={`/`}>
-                                <Icon className="purple lighten-1 circle white-text">delete_outline</Icon>
-                            </Link>}>
-                            <p>¿Está seguro que desea suprimir este usuario?</p>
+                            <Button
+                                    className='green lighten-1 modal-close'
+                                    waves='light'
+                                    icon='delete_outline'
+                                    tooltip='Borrar'
+                                /> 
+                            }> 
+                            <p>¿Está seguro que desea suprimir este usuario?</p>   
                     </Modal>
                 </td>
             </tr>
@@ -177,7 +295,7 @@ class Usuarios extends Component {
                                 <Input 
                                     s={12}
                                     m={6}
-                                    label="Pasaporte"
+                                    label="No. Pasaporte"
                                     type='number'
                                     value={this.props.pasaporte}
                                     onChange= {
@@ -187,7 +305,7 @@ class Usuarios extends Component {
                                 />
                             </Row>
                         </Modal>
-                </h3>
+                    </h3>
                 <br/>
                 <Table>
                     <thead>

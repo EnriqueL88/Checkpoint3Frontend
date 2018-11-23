@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { LLAMAR, EXITOSO, FALLO, PRIMER_GET, FORMA_EXITOSA } from '../types/usuariosTypes';
-
+import { LLAMAR_USUARIO, ELIMINAR_USUARIO, PRIMER_GET, EXITOSO_USUARIO, FALLO_USUARIO, VACIAR_FORMULARIO_USUARIO, USUARIO_EDITAR} from '../types/usuariosTypes';
 export const traerUsuarios = () => async (dispatch) =>
 {
 	dispatch({ type: LLAMAR });
@@ -21,12 +20,6 @@ export const llamarEditado = (id) => async (dispatch) => {
 	https://chchikorita.herokuapp.com/api/usuarios/${id}`
 	);
 }
-
-export const cambiarInput = (type, valor) => async (dispatch) => {
-	dispatch({ type, payload: valor });
-};
-import axios from 'axios';
-import { LLAMAR_USUARIO, ELIMINAR_USUARIO, PRIMER_GET, EXITOSO_USUARIO, FALLO_USUARIO, VACIAR_FORMULARIO_USUARIO, USUARIO_EDITAR} from '../types/usuariosTypes';
 
 //Esta acción es para traer o desplegar toda la lista de usuarios.
 

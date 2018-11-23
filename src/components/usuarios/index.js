@@ -74,8 +74,7 @@ class Usuarios extends Component {
                                     <Input type="email" label="Email" s={6} />
                                     <Input  label="ID de pasaporte" s={6} />
                                     <Button floating large className='green lighen-1' waves='light' icon='flight_takeoff' 
-                                    onClick={this.enviar} 
-                                    disabled={this.props.cargando}/> 
+                                    onClick={this.enviarUsuarios} /> 
                                     <h7>   Guardar Usuario</h7>
                                 </Row>
                         </Modal>

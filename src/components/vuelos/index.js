@@ -11,7 +11,6 @@ import * as vuelosActions from '../../actions/vuelosActions';
   }
 
   desplegarVuelos = () => {
-    console.log("Desplegando tabla...");
     return (
       <Table hoverable={true}>
           <thead>

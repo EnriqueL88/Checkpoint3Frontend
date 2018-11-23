@@ -2,7 +2,9 @@ import React , {Component} from 'react';
 import {connect} from 'react-redux';
 import * as vuelosActions from '../../actions/vuelosActions';
 import {Table, Button} from 'react-materialize' ;
+import {Link }from 'react-router-dom';
 
+ 
 class Manifiesto extends Component {
 	componentDidMount() {
 		this.props.traerManifiesto(this.props.match.params.id);
@@ -22,7 +24,9 @@ class Manifiesto extends Component {
 		return (
 			<div>
 				<h3> Manifiesto</h3>
-                    <Button floating large className='green lighten-1' waves='light' icon='add'/>
+                	<Link className="purple-text text-darken-text-2" to={`/vuelos/${this.props.match.params.id}/agregar`}>
+                    	<Button floating large className='green lighten-1' waves='light' icon='add'  />
+					</Link>
 
 				<Table>
 					<thead>
@@ -34,8 +38,6 @@ class Manifiesto extends Component {
 					</thead>
 					<tbody>
 						{this.desplegarManifiesto()}
-						{console.log(this.props.manifiesto,'aqio')}
-						
 					</tbody>
 				</Table>
 			</div>

@@ -7,3 +7,7 @@ export const AGREGAR_VUELO = "vuelos_agregar";
 export const MODIFICAR_VUELO = "vuelos_modificar";
 export const TRAER_MANIF = "vuelos_manifiesto";
 export const CONSULTA_ESTADOS = "estados_consulta";
+export const PASAPORTE = "pasaporte";
+export const TRAER_USUARIO = "usuario";
+export const DELETE = "delete";
+

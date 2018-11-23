@@ -11,8 +11,10 @@ const INITIAL_STATE = {
   origen: '',
   destino: '',
   ruta: '',
-  manifiesto: []
-  estados: {}
+  manifiesto: [],
+  estados: {},
+  usuario:{},
+  pasaporte:''
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -20,11 +22,16 @@ export default (state = INITIAL_STATE, action) => {
     case Types.LLAMAR: return { ...state, error: null, llamando: true };
     case Types.EXITOSO: return { ...state, error: null, llamando: false };
     case Types.FALLO: return { ...state, llamando: false, error: action.payload };
-
-    case Types.TRAER_MANIF:console.log(action.payload, 's') ;
-    return {
+    case Types.PASAPORTE: return {...state, pasaporte: action.payload};
+    case Types.DELETE: return {...state, usuario:{}, pasaporte:''}
+    case Types.TRAER_USUARIO:return {
+      ...state, usuario: action.payload
+    };
+    
+    case Types.TRAER_MANIF:return {
       ...state, manifiesto: action.payload
     };
+
     case Types.CONSULTA_TODOS_VUELOS:
       return {
       ...state, vuelos: action.payload

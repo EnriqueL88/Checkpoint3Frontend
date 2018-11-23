@@ -26,11 +26,7 @@ class Usuarios extends Component {
                 <td>{ elem.nombre }</td>
                 <td>{ elem.pasaporte }</td>
                 <td>{ elem.fechaNacimiento }</td>
-                <td>
-                    <Link to={`/./${elem.id}`}>
-                        <Icon>add</Icon>
-                    </Link>
-                </td>
+                
                 <td>
                     <Link to={`/./${elem.id}`}>
                         <Icon>edit</Icon>
@@ -73,10 +69,14 @@ class Usuarios extends Component {
                             trigger={<Button floating large className='green lighen-1' waves='light' icon='add'/>}>
                                 <Row>
                                     <Input  s={12} label="Nombre" />
-                                    <Input  s={12} label="Apellido Paterno" />
-                                    <Input  s={12} label="Apellido Materno" />
+                                    <Input  s={6} label="Apellido Paterno" />
+                                    <Input  s={6} label="Apellido Materno" />
                                     <Input type="email" label="Email" s={6} />
                                     <Input  label="ID de pasaporte" s={6} />
+                                    <Button floating large className='green lighen-1' waves='light' icon='flight_takeoff' 
+                                    onClick={this.enviar} 
+                                    disabled={this.props.cargando}/> 
+                                    <h7>   Guardar Usuario</h7>
                                 </Row>
                         </Modal>
                     </h3>

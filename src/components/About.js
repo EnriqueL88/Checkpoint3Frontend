@@ -60,6 +60,7 @@ const About = (props) =>(
 				<h4> Front End</h4>
 				<div className="lista">
 					<li> React	</li>
+					<li> Redux	</li>
 					<li> react-materialize	</li>
 					<li> Axios	</li>
 				</div>

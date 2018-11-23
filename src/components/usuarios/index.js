@@ -52,10 +52,13 @@ class Usuarios extends Component {
                 <td>{ elem.correo}</td>
                 <td className='alignIcons'>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <Link to={`/u_editar/${elem.IDUsuario}`}>
                         <Icon className="purple lighten-1 circle white-text">edit</Icon>
                     </Link>
 =======
+=======
+>>>>>>> 32888e9c9ae7c3059e5a89c5d7f545f51c113820
                 <Modal
                         header='Editar Usuario'
                         actions={
@@ -158,6 +161,9 @@ class Usuarios extends Component {
                             </Row> 
                     </Modal>
 
+<<<<<<< HEAD
+>>>>>>> 32888e9c9ae7c3059e5a89c5d7f545f51c113820
+=======
 >>>>>>> 32888e9c9ae7c3059e5a89c5d7f545f51c113820
                     <Modal
                         header='Suprimir Usuario'

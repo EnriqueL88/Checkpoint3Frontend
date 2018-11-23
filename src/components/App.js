@@ -6,8 +6,10 @@ import Aerolineas from './aerolineas';
 import Body from './Body';
 import Usuarios from './usuarios';
 import About from './About.js'
+import AerolineasAgregar from './aerolineas/Agregar'
 import Vuelos from './vuelos';
 import DetalleVuelo from './vuelos/detalleVuelo';
+import Manifiesto from './manifiesto';
 
 const App =() => (
 		<div>
@@ -21,6 +23,8 @@ const App =() => (
 							<Route exact path="/" component={Body}/>
 							<Route exact path="/about" component={About}/>
 							<Route exact path="/vuelos/:id" component={DetalleVuelo}/>
+							<Route exact path='/a_agregar' component={AerolineasAgregar}/>
+							<Route exact path='/manifiestos/:id' component={Manifiesto}/>
 						</main>
 					<Footer/>
 				</div>

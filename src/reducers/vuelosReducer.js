@@ -14,6 +14,7 @@ const INITIAL_STATE = {
   estados: {},
   aerolineas: [],
   matriculas: []
+  manifiesto: []
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -22,6 +23,10 @@ export default (state = INITIAL_STATE, action) => {
     case Types.EXITOSO: return { ...state, error: null, llamando: false };
     case Types.FALLO: return { ...state, llamando: false, error: action.payload };
 
+    case Types.TRAER_MANIF:console.log(action.payload, 's') ;
+    return {
+      ...state, manifiesto: action.payload
+    };
     case Types.CONSULTA_TODOS_VUELOS:
       return {
       ...state, vuelos: action.payload

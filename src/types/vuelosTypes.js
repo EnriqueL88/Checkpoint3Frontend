@@ -8,3 +8,4 @@ export const MODIFICAR_VUELO = "vuelos_modificar";
 export const CONSULTA_ESTADOS = "estados_consulta";
 export const CONSULTA_AEROLINEAS = "vuelos_aerolineas";
 export const CONSULTA_MATRICULAS = "vuelos_matriculas";
+export const TRAER_MANIF = "vuelos_manifiesto";

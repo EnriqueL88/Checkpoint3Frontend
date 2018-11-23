@@ -11,9 +11,6 @@ class Flotillas extends Component {
 				<tr key={elem.id}>
 					<td>{elem.matricula}</td>
 					<td>{elem.capacidad}</td>
-					<td className='alignIcons'>
-						<Button className='light-green lighten-1 right' waves='light' icon='add_circle'/>
-					</td>
 				</tr>
 			));
 	render() {
@@ -24,7 +21,6 @@ class Flotillas extends Component {
 						<tr>
 							<th data-field="id">Matricula</th>
 							<th data-field="name">Capacidad</th>
-							<th data-field="actions">Acciones</th>
 						</tr>
 					</thead>
 					<tbody>

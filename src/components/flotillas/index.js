@@ -5,21 +5,14 @@ import {Table, Button} from 'react-materialize' ;
 
 class Flotillas extends Component {
 
-	componentDidMount() {
-		if(!this.props.primer_get)
-		this.props.desplegarFlotillas();
-		console.log(this.props.id)
-	}
-
 	desplegarFlotillas = () =>
-		this.props.matriculas.map((elem) =>
+		this.props.flotilla_cargar.matriculas.map((elem) =>
 			(
 				<tr key={elem.id}>
 					<td>{elem.matricula}</td>
 					<td>{elem.capacidad}</td>
 					<td className='alignIcons'>
-						<Button className='green accent-1' waves='light' icon='visibility'/>
-						<Button className='green accent-1' waves='light' icon='edit'/>
+						<Button className='light-green lighten-1 right' waves='light' icon='add_circle'/>
 					</td>
 				</tr>
 			));
@@ -31,10 +24,11 @@ class Flotillas extends Component {
 						<tr>
 							<th data-field="id">Matricula</th>
 							<th data-field="name">Capacidad</th>
+							<th data-field="actions">Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
-						{this.desplegarFlotillas}
+						{this.desplegarFlotillas()}
 					</tbody>
 				</Table>
 			</div>
@@ -42,9 +36,9 @@ class Flotillas extends Component {
 	}	
 }
 
-const mapStateToProps = ({flotillasReducer}) => 
+const mapStateToProps = ({flotillasReducer, aerolineasReducer: {flotilla_cargar}}) => 
 {
-	return flotillasReducer;
+	return {...flotillasReducer, flotilla_cargar};
 };
 
 export default connect(mapStateToProps, flotillasActions)(Flotillas)

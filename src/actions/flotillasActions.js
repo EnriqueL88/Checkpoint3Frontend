@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {LLAMAR_FLOTILLA, EXITOSO, FALLO, EDITAFLOTILLA, PRIMER_GET, LLAMAR_AEROLINEA, CONSULTAR_AEROLINEA, FALLO_CONSULTA} from '../types/flotillasTypes.js';
+import {LLAMAR_FLOTILLA, EXITOSO, FALLO, PRIMER_GET} from '../types/flotillasTypes.js';
 
 export const desplegarFlotillas = (IDAerolinea) => async (dispatch) => {
 	dispatch ({ type: LLAMAR_FLOTILLA});

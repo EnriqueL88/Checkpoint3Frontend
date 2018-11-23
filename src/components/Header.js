@@ -1,31 +1,18 @@
 import React from 'react';
+import {Icon, Navbar, NavItem} from 'react-materialize';
 
 const Header = (props) => (
+	<div>
 		<div>
-			<nav>
-				<div className="nav-wrapper green">
-					<a href="/" className="brand-logo right">ChikoriAir</a>
-						<ul className="left hide-on-med-and-down">
-							<li>
-								<a href="/"><i className="material-icons left">home</i>Home</a>
-							</li>
-							<li>
-								<a href="/usuarios"><i className="material-icons left">perm_contact_calendar</i>Usuarios</a>
-							</li>
-							<li>
-								<a href="/"><i className="material-icons left">flight_takeoff</i>Vuelos</a>
-							</li>
-							<li>
-								<a href="/aerolineas"><i className="material-icons left">business</i>Aerolíneas</a>
-							</li>
-							<li>
-								<a href="/about" className="waves-effect waves-light btn pulse green darken-3">About Us<i className="material-icons left">people</i></a>
-							</li>
-
-						</ul>
-					</div>
-			</nav>
+			<Navbar left brand='Volantibus' className='green'>
+				<NavItem href='/'><Icon left>home</Icon> Home</NavItem>
+				<NavItem href='/usuarios'><Icon left>perm_contact_calendar</Icon>Usuarios</NavItem>
+				<NavItem href='/'><Icon left>flight_takeoff</Icon>Vuelos</NavItem>
+				<NavItem href='/aerolineas'><Icon left>business</Icon>Aerolíneas</NavItem>
+				<NavItem href='/about'><Icon left>people</Icon>Quiénes somos?</NavItem>
+			</Navbar>
 		</div>
-	);
+	</div>
+);
 
 export default Header

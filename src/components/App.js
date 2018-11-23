@@ -6,6 +6,7 @@ import Aerolineas from './aerolineas';
 import Body from './Body';
 import Usuarios from './usuarios';
 import About from './About.js'
+import AerolineasAgregar from './aerolineas/Agregar'
 
 const App =() => (
 		<div>
@@ -17,6 +18,7 @@ const App =() => (
 							<Route exact path='/usuarios' component={Usuarios} />
 							<Route exact path="/" component={Body}/>
 							<Route exact path="/about" component={About}/>
+							<Route exact path='/a_agregar' component={AerolineasAgregar}/>
 						</main>
 					<Footer/>
 				</div>

@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   destino: '',
   ruta: '',
   manifiesto: []
+  estados: {}
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,7 +26,6 @@ export default (state = INITIAL_STATE, action) => {
       ...state, manifiesto: action.payload
     };
     case Types.CONSULTA_TODOS_VUELOS:
-      console.log(action.payload);
       return {
       ...state, vuelos: action.payload
     };
@@ -48,6 +48,9 @@ export default (state = INITIAL_STATE, action) => {
         state.vuelos.splice(idVueloModificado, 1, action.payload);
       }
       return state;
+    case Types.CONSULTA_ESTADOS:
+      console.log(action.payload);
+      return { ...state, estados: action.payload };
     default: return state;
   }
 };

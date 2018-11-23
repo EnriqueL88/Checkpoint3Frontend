@@ -27,9 +27,15 @@ export const traerManifiesto = (id) => async(dispatch) => {
 export const traerVuelos = () => async(dispatch) => {
   dispatch(llamarAction);
   try {
-    const response = await axios.get(getApiUri("vuelos"));
+    const vuelosResponse = await axios.get(getApiUri("vuelos"));
     dispatch(exitoAction);
-    dispatch({ type: Types.CONSULTA_TODOS_VUELOS, payload: response.data });
+    dispatch({ type: Types.CONSULTA_TODOS_VUELOS, payload: vuelosResponse.data });
+
+    const estadosResponse = await axios.get(getApiUri('estados'));
+    dispatch(exitoAction);
+    const estados = {};
+    estadosResponse.data.forEach((item) =>  estados[item.idEstado] = item.estado);
+    dispatch({type: Types.CONSULTA_ESTADOS, payload: estados })
   } catch (error) {
     dispatchError(dispatch, error);
   }
@@ -58,11 +64,24 @@ export const agregarVuelo = (vuelo) => async(dispatch) => {
 };
 
 export const modificarVuelo = (vuelo) => async(dispatch) => {
-  dispatch({ type: Types.LLAMAR });
+  dispatch(llamarAction);
   try {
     const response = axios.post(getApiUri(`vuelos/${vuelo.IDVuelo}`), vuelo);
     dispatch(exitoAction);
     dispatch({ type: Types.MODIFICAR_VUELO, payload: response.data });
+  } catch (error) {
+    dispatchError(dispatch, error);
+  }
+};
+
+export const listaEstados = async(dispatch) => {
+  dispatch(llamarAction);
+  try {
+    const response = await axios.get(getApiUri('vuelos/estados'));
+    dispatch(exitoAction);
+    //const estados = {};
+    //response.data.forEach((item) =>  estados[item.idEstado] = item.estado);
+    dispatch({type: Types.CONSULTA_ESTADOS, payload: response.data })
   } catch (error) {
     dispatchError(dispatch, error);
   }

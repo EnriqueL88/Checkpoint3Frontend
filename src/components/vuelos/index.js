@@ -7,6 +7,7 @@ import * as vuelosActions from '../../actions/vuelosActions';
  class Vuelos extends Component {
   componentDidMount() {
     this.props.traerVuelos();
+    console.log(this.props.estados);
   }
 
   desplegarVuelos = () => {
@@ -15,29 +16,34 @@ import * as vuelosActions from '../../actions/vuelosActions';
       <Table hoverable={true}>
           <thead>
           <tr>
+            <th>IDRuta</th>
+            <th className="hide-on-med-and-down">Matricula</th>
             <th>Origen</th>
             <th>Destino</th>
-            <th>estado</th>
-            <th>IDRuta</th>
-            <th>Salida</th>
+            <th>Estado</th>
+            <th className="hide-on-med-and-down">Salida</th>
             <th>Llegada</th>
-            <th>Matricula</th>
           </tr>
           </thead>
 
           <tbody>
           {this.props.vuelos.map(elem => (
               <tr key={elem.IDVuelo}>
+                <td>{elem.ruta}</td>
+                <td className="hide-on-med-and-down">{elem.matriculaID}</td>
                 <td>{elem.origen}</td>
                 <td>{elem.destino}</td>
-                <td>{elem.idEstado}</td>
-                <td>{elem.IDVuelo}</td>
-                <td>{elem.fechaSalida}</td>
-                <td>{elem.fechaLlegada}</td>
-                <td>{elem.matricula}</td>
+                <td>{this.props.estados[elem.idEstado]}</td>
+                <td className="hide-on-med-and-down">{new Date(elem.fechaSalida).toLocaleString()}</td>
+                <td>{new Date(elem.fechaLlegada).toLocaleString()}</td>
                 <td>
-                  <Link to={`/vuelos/${elem.IDVuelo}`}>
-                    <Icon>delete</Icon>
+                  <Link className="purple-text" to={`/vuelos/${elem.IDVuelo}`}>
+                    <Icon>list</Icon>
+                  </Link>
+                </td>
+                <td>
+                  <Link className="purple-text text-darken-text-2" to={`/vuelos/${elem.IDVuelo}/manifiesto`}>
+                    <Icon>people</Icon>
                   </Link>
                 </td>
               </tr>
